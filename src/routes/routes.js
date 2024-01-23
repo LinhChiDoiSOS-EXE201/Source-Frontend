@@ -1,5 +1,4 @@
 import Home from '~/pages/Home';
-import Login from '~/pages/Login';
 import Profile from '~/pages/Profile';
 import config from '~/config';
 import Search from '~/pages/Search';
@@ -7,6 +6,7 @@ import KhanCap from '~/pages/KhanCap';
 import ChuanDoan from '~/pages/ChuanDoan';
 import KyNang from '~/pages/KyNang';
 import ThucHanh from '~/pages/ThucHanh';
+import Login from '~/pages/Login';
 
 const publicRoutes = [
     // { path: '/', component: Home },

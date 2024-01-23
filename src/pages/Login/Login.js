@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
 import images from '~/assets/images';
@@ -18,10 +17,10 @@ function Login() {
                         <button className={cx('main-login-contain-container-inner-button')}>Đăng nhập</button>
                     </div>
                     <div className={cx('input-container')}>
-                        <input className={cx('input-field')} value="Email hoặc số điện thoại"></input>
+                        <input className={cx('input-field')} defaultValue="Email hoặc số điện thoại"></input>
                     </div>
                     <div className={cx('input-container1')}>
-                        <input className={cx('input-field')} value="Mật khẩu"></input>
+                        <input className={cx('input-field')} defaultValue="Mật khẩu"></input>
                     </div>
                     <div className={cx('forgot-password')}>Quên mật khẩu?</div>
                     <div className={cx('or-login-text')}>Hoặc đăng nhập miễn phí với</div>
