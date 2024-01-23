@@ -118,7 +118,18 @@
     line-height: normal;
     position: absolute;
     top: 45px;
+    text-decoration: none;
+    transition: font-weight 0.3s ease;
+
+    &:hover {
+        font-weight: 700;
+        cursor: pointer;
+    }
+    &.active {
+        font-weight: 700;
+    }
 }
+
 .text-khan-cap {
     left: 15%;
 }
