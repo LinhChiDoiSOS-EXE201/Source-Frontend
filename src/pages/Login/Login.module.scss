@@ -1,0 +1,283 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f1f4f5;
+}
+.logincontent {
+    width: 70%; /* Thay thế 774px bằng 70% */
+    left: 15%; /* Thay thế 574px bằng 15% */
+    top: 25vh; /* Thay thế 276px bằng 25vh */
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    font-family: Darker Grotesque;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+.loginTittle {
+    width: 70%;
+    left: 15%; /* Thay thế 743px bằng 50% */
+    top: 20vh;
+    position: absolute;
+    text-align: center;
+    color: #025b67;
+    font-size: 36px;
+    font-family: 'Be Vietnam Pro';
+    font-weight: 700;
+    word-wrap: break-word;
+}
+.main-login-contain {
+    display: flex;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    transform-origin: center center;
+}
+.main-login-contain-container {
+    width: 400%;
+    height: 400%;
+    left: 685px;
+    top: 0px;
+    position: absolute;
+}
+.main-login-contain-container-button {
+    width: 463.84px;
+    height: 60.5px;
+    left: 0;
+    top: 191.59px;
+    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    @media only screen and (max-width: 768px) {
+        width: 90%;
+        left: 5%;
+        top: auto; // Điều chỉnh theo bố cục trang web
+    }
+}
+.main-login-contain-container-inner-button {
+    width: 100%;
+    height: 100%;
+    background: #0eb5c8;
+    position: absolute;
+    text-align: center;
+    color: #f1f4f5;
+    font-size: 24px;
+    font-family: Darker Grotesque;
+    font-weight: 900;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 20px 20px 20px 20px;
+    @media only screen and (max-width: 768px) {
+        font-size: 20px; // Điều chỉnh kích cỡ chữ tùy theo bố cục
+    }
+}
+.input-container {
+    width: 463.84px;
+    height: 60.5px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: white;
+    border: 1px #0eb5c8 solid;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    @media only screen and (max-width: 768px) {
+        width: 90%;
+        left: 5%;
+    }
+}
+.input-field {
+    width: calc(100% - 23.61px); /* Tính toán chiều rộng trừ padding trái */
+    height: 100%;
+    position: absolute;
+    left: 23.61px;
+    top: 0;
+    padding: 0 10px; /* Thêm padding cho input */
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    font-family: inherit;
+    color: #333;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    }
+}
+.input-label {
+    width: 240.35px;
+    height: 13.31px;
+    left: 23.61px;
+    top: 24.79px;
+    position: absolute;
+    color: #808080;
+    font-size: 18px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    font-family: Darker Grotesque;
+    font-weight: 300;
+    line-height: 13.31px; /* Căn chỉnh chiều cao văn bản */
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+        left: 10px;
+    }
+}
+
+.input-container1 {
+    margin-top: 80px;
+    width: 463.84px;
+    height: 60.5px;
+    left: 0;
+    top: 91.76;
+    position: absolute;
+    background: white;
+    border: 1px #0eb5c8 solid;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    @media only screen and (max-width: 768px) {
+        width: 90%;
+        left: 5%;
+    }
+}
+.input-field1 {
+    width: calc(100% - 23.61px); /* Tính toán chiều rộng trừ padding trái */
+    height: 100%;
+    position: absolute;
+    left: 23.61px;
+    top: 0;
+    padding: 0 10px; /* Thêm padding cho input */
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    font-family: inherit;
+    color: #333;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    }
+}
+.input-label1 {
+    width: 240.35px;
+    height: 13.31px;
+    left: 23.61px;
+    top: 24.79px;
+    position: absolute;
+    color: #808080;
+    font-size: 18px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+    font-family: Darker Grotesque;
+    font-weight: 300;
+    line-height: 13.31px; /* Căn chỉnh chiều cao văn bản */
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px; /* Điều chỉnh kích cỡ chữ tùy bố cục */
+        left: 10px;
+    }
+}
+.forgot-password {
+    width: 227.89px;
+    height: 20.17px;
+    left: 222.85px;
+    margin-top: 150px;
+    position: absolute;
+    text-align: right;
+    color: #025b67;
+    font-size: 20px;
+    font-family: Darker Grotesque;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+.or-login-text {
+    width: 220.83px;
+    height: 11.09;
+    left: 125.01px;
+    top: 268.31px;
+    position: absolute;
+    text-align: right;
+    color: #440c11;
+    font-size: 20px;
+    font-family: Darker Grotesque;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+.help-center {
+    width: 141.17px;
+    height: 11.09px;
+    left: 161.34px;
+    top: 471.91px;
+    position: absolute;
+    text-align: right;
+    color: #025b67;
+    font-size: 20px;
+    font-family: Darker Grotesque;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+@media (max-width: 768px) {
+    .main-login-contain-container {
+        width: 300px;
+        height: 320px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.image-content {
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    justify-content: flex-start; // Đẩy nội dung về phía trái
+    width: 545px;
+    height: 299px;
+}
+
+.image-content img {
+    width: 100%;
+    left: 20%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-content h2 {
+    position: absolute;
+    top: 265.43px;
+    left: 44.81px;
+    width: 456.42px;
+    height: 33.57px;
+    text-align: center;
+    color: black;
+    font-size: 28px;
+    font-family: Darker Grotesque;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+
+@media only screen and (max-width: 768px) {
+    .image-content {
+        width: 100%;
+    }
+
+    .image-content h2 {
+        font-size: 24px;
+        width: 90%;
+        left: 5%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .image-content h2 {
+        font-size: 20px;
+        width: 80%;
+        left: 10%;
+    }
+}
