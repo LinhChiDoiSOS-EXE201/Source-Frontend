@@ -1,5 +1,6 @@
 import Home from '~/pages/Home';
 import Profile from '~/pages/Profile';
+import Resgister from '~/pages/Resgister';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -9,6 +10,7 @@ const publicRoutes = [
     // { path: '/search', component: Search, layout: null },
 
     { path: '/', component: Home },
+    { path: '/resgister', component: Resgister },
     { path: '/profile', component: Profile },
 ];
 

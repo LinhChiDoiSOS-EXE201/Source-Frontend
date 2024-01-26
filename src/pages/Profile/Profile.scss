@@ -1,0 +1,121 @@
+.infoBlock {
+    margin: 40px 0;
+    display: flex;
+    border-radius: 40px;
+    background: #0eb5c8;
+    padding: 30px 43px;
+    > .leftSide,
+    > .rightSide {
+        display: flex;
+        width: 50%;
+        align-items: center;
+    }
+
+    > .leftSide {
+        gap: 40px;
+
+        > .blockName {
+            > .name {
+                color: #fff;
+                font-family: 'Darker Grotesque';
+                font-size: 52px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+            }
+            > .desc {
+                color: #fff;
+                font-family: 'Darker Grotesque';
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+    }
+
+    > .rightSide {
+        justify-content: space-evenly;
+
+        > div {
+            display: flex;
+            gap: 10px;
+            color: #fff;
+            font-family: 'Darker Grotesque';
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+}
+
+.overviewBlock {
+    display: flex;
+    gap: 50px;
+    > .leftSide,
+    > .rightSide {
+        width: 50%;
+    }
+
+    > .leftSide {
+        > .statusBlock {
+            display: flex;
+            gap: 30px;
+
+            > .status {
+                min-width: 263.351px;
+                padding: 23px 38px;
+                border-radius: 10px;
+                border: 1px solid #000;
+                background: #fff;
+                color: #025b67;
+                > div {
+                    margin-top: 23px;
+                    display: flex;
+                    gap: 8px;
+                }
+                > .title {
+                    font-family: 'Darker Grotesque';
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 800;
+                }
+            }
+            > .status.red {
+                color: #fff;
+
+                background: #440c11;
+            }
+            
+        }
+        > .learningCourse {
+            > .title {
+                color: #025b67;
+                font-family: 'Darker Grotesque';
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+                padding: 33px 0;
+            }
+
+            .courses {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .course {
+                    
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    > .rightSide {
+        img {
+            width: 100%;
+        }
+    }
+}

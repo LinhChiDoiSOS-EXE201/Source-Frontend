@@ -25,3 +25,33 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
 }
+
+/* Container CSS */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Responsive Container CSS */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 720px; 
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      max-width: 540px; 
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .container {
+      max-width: 360px; 
+    }
+  }
