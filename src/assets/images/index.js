@@ -7,6 +7,8 @@ const images = {
     logoFb: require('~/assets/images/logoFb.svg').default,
     logoPhone: require('~/assets/images/logoPhone.svg').default,
     logoMail: require('~/assets/images/logoMail.svg').default,
+    logoGoogle: require('~/assets/images/logoGoogle.svg').default,
+    logoFacebookBold: require('~/assets/images/logoFacebookBold.svg').default,
 };
 
 export default images;

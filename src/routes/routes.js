@@ -7,6 +7,7 @@ import ChuanDoan from '~/pages/ChuanDoan';
 import KyNang from '~/pages/KyNang';
 import ThucHanh from '~/pages/ThucHanh';
 import Login from '~/pages/Login';
+import Register from '~/pages/Register';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -23,6 +24,7 @@ const publicRoutes = [
     { path: config.routes.chuandoan, component: ChuanDoan },
     { path: config.routes.kynang, component: KyNang },
     { path: config.routes.thuchanh, component: ThucHanh },
+    { path: config.routes.register, component: Register },
 ];
 
 const privateRoutes = [];
