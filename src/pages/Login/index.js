@@ -10,9 +10,8 @@ import { LOGIN } from '~/utils/apiContrants';
 import jwtDecode from 'jwt-decode';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import { CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import LoginSnackbar from './LoginSnackbar';
 
 const cx = classNames.bind(styles);
@@ -44,14 +43,11 @@ function Login() {
 
                 localStorage.setItem('loginInfo', JSON.stringify(response.data));
 
-                if (user.role === 'EndUser') {
-                    navigate(config.routes.home);
-                } else if (user.role === 'Admin') {
-                    navigate(config.routes.dashboard);
+                //console.log(user.role);
+                if (user.role === 'Customer') {
+                    navigate(config.routes.profile);
                 } else if (user.role === 'Manager') {
-                    navigate(config.routes.dashboard);
-                } else if (user.role === 'Staff') {
-                    navigate(config.routes.orderTracking);
+                    navigate(config.routes.profile);
                 }
             } catch (error) {
                 setText('Đăng nhập không thành công. Sai mật khẩu hoặc số điện thoại');
@@ -68,26 +64,13 @@ function Login() {
                 <div className={cx('text-wrapper-12')}>ĐĂNG NHẬP TÀI KHOẢN</div>
                 <div className={cx('group-3')}>
                     <div className={cx('group-4')}>
-                        <div className={cx('overlap-group-wrapper')}>
-                            {/*<button className={cx('div-wrapper')}>
-                                <div className={cx('text-wrapper-13')}>Đăng nhập</div>
-    </button>*/}
-                            <Button
-                                className={cx('div-wrapper')}
-                                variant="contained"
-                                fullWidth
-                                type="submit"
-                                sx={{ mt: 3, mb: 2 }}
-                                disabled={formik.isSubmitting}
-                                startIcon={formik.isSubmitting ? <CircularProgress size="0.9rem" /> : null}
-                            >
-                                {formik.isSubmitting ? 'Đang Đăng nhập' : 'Đăng nhập'}
-                            </Button>
-                        </div>
-                        <div className={cx('overlap-wrapper')}>
-                            <Paper className={cx('overlap')}>
+                        <Typography component="h1" variant="h5">
+                            Đăng nhập
+                        </Typography>
+                        <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
+                            <div className={cx('overlap-wrapper')}>
                                 <TextField
-                                    className={cx('text-wrapper-14')}
+                                    className={cx('overlap')}
                                     required
                                     id="email"
                                     name="email"
@@ -99,12 +82,10 @@ function Login() {
                                     autoComplete="off"
                                     autoFocus
                                 />
-                            </Paper>
-                        </div>
-                        <div className={cx('group-5')}>
-                            <div className={cx('overlap')}>
+                            </div>
+                            <div className={cx('group-5')}>
                                 <TextField
-                                    className={cx('text-wrapper-15')}
+                                    className={cx('overlap')}
                                     required
                                     name="password"
                                     placeholder="Mật khẩu"
@@ -117,30 +98,52 @@ function Login() {
                                     autoComplete="off"
                                 />
                             </div>
-                        </div>
-                        <div className={cx('text-wrapper-16')}>Quên mật khẩu?</div>
-                        <p className={cx('text-wrapper-17')}>Hoặc đăng nhập miễn phí với</p>
-                        <div className={cx('text-wrapper-18')}>Trung tâm trợ giúp</div>
-                        <div className={cx('group-6')}>
-                            <Link to={config.routes.register} className={cx('text-wrapper-19')}>
-                                Đăng ký miễn phí
-                            </Link>
-                            <p className={cx('text-wrapper-20')}>Bạn chưa có tài khoản?</p>
-                        </div>
-                        <div className={cx('group-7')}>
-                            <div className={cx('group-8')}>
-                                <div className={cx('overlap-group-2')}>
-                                    <div className={cx('text-wrapper-21')}>Facebook</div>
-                                    <img className={cx('group-9')} alt="Group" src={images.logoFacebookBold} />
+                            <div className={cx('overlap-group-wrapper')}>
+                                {/*<button className={cx('div-wrapper')}>
+                                <div className={cx('text-wrapper-13')}>Đăng nhập</div>
+                            </button>*/}
+                                <Button
+                                    className={cx('div-wrapper')}
+                                    variant="contained"
+                                    type="submit"
+                                    sx={{
+                                        mt: 0,
+                                        mb: 0,
+                                        fontSize: '1.8rem',
+                                        fontWeight: 900,
+                                        textTransform: 'none',
+                                        fontFamily: 'Darker Grotesque, Helvetica',
+                                    }}
+                                    disabled={formik.isSubmitting}
+                                    startIcon={formik.isSubmitting ? <CircularProgress size="0.9rem" /> : null}
+                                >
+                                    {formik.isSubmitting ? 'Đang Đăng nhập' : 'Đăng nhập'}
+                                </Button>
+                            </div>
+                            <div className={cx('text-wrapper-16')}>Quên mật khẩu?</div>
+                            <p className={cx('text-wrapper-17')}>Hoặc đăng nhập miễn phí với</p>
+                            <div className={cx('text-wrapper-18')}>Trung tâm trợ giúp</div>
+                            <div className={cx('group-6')}>
+                                <Link to={config.routes.register} className={cx('text-wrapper-19')}>
+                                    Đăng ký miễn phí
+                                </Link>
+                                <p className={cx('text-wrapper-20')}>Bạn chưa có tài khoản?</p>
+                            </div>
+                            <div className={cx('group-7')}>
+                                <div className={cx('group-8')}>
+                                    <div className={cx('overlap-group-2')}>
+                                        <div className={cx('text-wrapper-21')}>Facebook</div>
+                                        <img className={cx('group-9')} alt="Group" src={images.logoFacebookBold} />
+                                    </div>
+                                </div>
+                                <div className={cx('group-10')}>
+                                    <div className={cx('overlap-group-2')}>
+                                        <div className={cx('text-wrapper-22')}>Google</div>
+                                        <img className={cx('vector-3')} alt="Vector" src={images.logoGoogle} />
+                                    </div>
                                 </div>
                             </div>
-                            <div className={cx('group-10')}>
-                                <div className={cx('overlap-group-2')}>
-                                    <div className={cx('text-wrapper-22')}>Google</div>
-                                    <img className={cx('vector-3')} alt="Vector" src={images.logoGoogle} />
-                                </div>
-                            </div>
-                        </div>
+                        </Box>
                     </div>
                     <div className={cx('group-11')}>
                         <img className={cx('logo-SOS-ver-mau')} alt="Logo SOS ver mau" src={images.logo} />

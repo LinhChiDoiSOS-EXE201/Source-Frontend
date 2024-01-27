@@ -1,0 +1,61 @@
+.boxContent {
+    padding: 137px 0 137px;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    > .rightSide {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+    > .lefSide {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        > .title {
+            color: #025b67;
+            leading-trim: both;
+            text-edge: cap;
+            font-family: 'Be Vietnam Pro';
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            > .bold {
+                color: #f23929;
+            }
+        }
+        > .listBox {
+            margin-top: 62px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            > .item {
+                display: flex;
+                gap: 14px;
+            }
+        }
+        > .buttonGroup {
+            margin-top: 57px;
+            display: flex;
+            gap: 35px;
+            > .btn {
+                min-width: 157px;
+                border-radius: 10px;
+                background: #f23929;
+                padding: 13px 13px 18px 13px;
+                color: #fff;
+                font-family: 'Darker Grotesque';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: center;
+            }
+            > .btn.blue {
+                background: #0eb5c8;
+            }
+        }
+    }
+}
