@@ -3,7 +3,7 @@ import styles from './Register.module.scss';
 import images from '~/assets/images';
 import { Link, useNavigate } from 'react-router-dom';
 import config from '~/config';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -22,7 +22,7 @@ function Register() {
     };
     const navigate = useNavigate();
     const formik = useFormik({
-        initialValue: {
+        initialValues: {
             userName: '',
             fullname: '',
             phone: '',
@@ -32,6 +32,7 @@ function Register() {
         },
         validationSchema: Yup.object({
             fullname: Yup.string().required('Required').min(1, "Can't empty"),
+            userName: Yup.string().required('Required').min(1, "Can't empty"),
             phone: Yup.string()
                 .required('Required')
                 .matches(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, 'Must be a valid phone number'),
@@ -56,17 +57,18 @@ function Register() {
         onSubmit: async (values) => {
             try {
                 const response = await axiosPublic.post(REGISTER, {
-                    Phone: values.phone,
-                    Email: values.email,
-                    Password: values.password,
-                    UserName: values.userName,
-                    Fullname: values.fullname,
+                    phone: values.phone,
+                    email: values.email,
+                    password: values.password,
+                    userName: values.userName,
+                    fullname: values.fullname,
                 });
                 if (response.status === 200) {
                     toast.success(response.data.message);
                     navigate(config.routes.login);
                 }
             } catch (error) {
+                console.log(error);
                 if (error.response.status === 500) {
                     setText('Đăng Ký không thành công.');
                     setOpen(true);
@@ -83,9 +85,6 @@ function Register() {
                 <div className={cx('text-wrapper-12')}>ĐĂNG KÝ TÀI KHOẢN</div>
                 <div className={cx('group-3')}>
                     <div className={cx('group-4')}>
-                        <Typography component="h1" variant="h5">
-                            Đăng ký
-                        </Typography>
                         <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
                             <div className={cx('overlap-group-wrapper')}>
                                 <Button className={cx('div-wrapper')} type="submit" variant="contained">
@@ -119,6 +118,8 @@ function Register() {
                                         value={formik.values.phone}
                                         onChange={formik.handleChange}
                                         placeholder="Số điện thoại"
+                                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                        helperText={formik.touched.phone && formik.errors.phone}
                                         autoComplete="off"
                                         autoFocus
                                     />
@@ -134,10 +135,27 @@ function Register() {
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
                                     placeholder="Tài khoản đăng nhập (Email hoặc số điện thoại)"
+                                    error={formik.touched.email && Boolean(formik.errors.email)}
+                                    helperText={formik.touched.email && formik.errors.email}
                                     autoComplete="off"
                                     autoFocus
                                 />
                                 {/*<p className={cx('text-wrapper-16')}>Tài khoản đăng nhập (Email hoặc số điện thoại)</p>*/}
+                            </div>
+                            <div className={cx('group-username')}>
+                                <TextField
+                                    className={cx('overlap-2')}
+                                    required
+                                    id="userName"
+                                    name="userName"
+                                    value={formik.values.userName}
+                                    onChange={formik.handleChange}
+                                    placeholder="Username"
+                                    error={formik.touched.userName && Boolean(formik.errors.userName)}
+                                    helperText={formik.touched.userName && formik.errors.userName}
+                                    autoComplete="off"
+                                />
+                                {/*<p className={cx('text-wrapper-16')}>Additional Field</p>*/}
                             </div>
                             <div className={cx('group-8')}>
                                 <TextField
@@ -147,6 +165,8 @@ function Register() {
                                     value={formik.values.password}
                                     onChange={formik.handleChange}
                                     placeholder="Mật khẩu"
+                                    error={formik.touched.password && Boolean(formik.errors.password)}
+                                    helperText={formik.touched.password && formik.errors.password}
                                     type="password"
                                     id="password"
                                     autoComplete="off"
@@ -161,6 +181,8 @@ function Register() {
                                     value={formik.values.confirmPassword}
                                     onChange={formik.handleChange}
                                     placeholder="Nhập lại mật khẩu"
+                                    error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                    helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
                                     type="password"
                                     id="confirmPassword"
                                     autoComplete="off"

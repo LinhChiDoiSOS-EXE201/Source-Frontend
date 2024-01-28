@@ -9,6 +9,7 @@ const images = {
     logoMail: require('~/assets/images/logoMail.svg').default,
     logoGoogle: require('~/assets/images/logoGoogle.svg').default,
     logoFacebookBold: require('~/assets/images/logoFacebookBold.svg').default,
+    fire: require('~/assets/images/fire.svg').default,
 };
 
 export default images;

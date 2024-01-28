@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import LoginSnackbar from './LoginSnackbar';
 
 const cx = classNames.bind(styles);
@@ -64,9 +64,6 @@ function Login() {
                 <div className={cx('text-wrapper-12')}>ĐĂNG NHẬP TÀI KHOẢN</div>
                 <div className={cx('group-3')}>
                     <div className={cx('group-4')}>
-                        <Typography component="h1" variant="h5">
-                            Đăng nhập
-                        </Typography>
                         <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
                             <div className={cx('overlap-wrapper')}>
                                 <TextField
