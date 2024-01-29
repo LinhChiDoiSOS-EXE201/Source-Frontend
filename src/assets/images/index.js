@@ -10,6 +10,9 @@ const images = {
     logoGoogle: require('~/assets/images/logoGoogle.svg').default,
     logoFacebookBold: require('~/assets/images/logoFacebookBold.svg').default,
     fire: require('~/assets/images/fire.svg').default,
+    iconSearchWhiteColor: require('~/assets/images/iconSearchInChuanDoan.svg').default,
+    nguyenTacSoCuu: require('~/assets/images/socapcuu/nguyenTacSoCuu.svg').default,
+    layoutColor: require('~/assets/images/socapcuu/layoutColor.svg').default,
 };
 
 export default images;

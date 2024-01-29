@@ -1,6 +1,8 @@
 import check from '~/assets/images/check.svg';
 import banner from '~/assets/images/logo.svg';
 import './Home.scss';
+import { Link } from 'react-router-dom';
+import config from '~/config';
 function Home() {
     return (
         <div className="container">
@@ -44,8 +46,12 @@ function Home() {
                         </div>
                     </div>
                     <div className="buttonGroup">
-                        <div className="btn">Đăng ký miễn phí</div>
-                        <div className="btn blue">Đăng nhập</div>
+                        <Link to={config.routes.register} className="btn">
+                            Đăng ký miễn phí
+                        </Link>
+                        <Link to={config.routes.login} className="btn blue">
+                            Đăng nhập
+                        </Link>
                     </div>
                 </div>
                 <div className="rightSide">

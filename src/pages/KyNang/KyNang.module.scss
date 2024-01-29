@@ -1,0 +1,47 @@
+.rectangle-title {
+    background-color: #f23929;
+    border-radius: 14px;
+    height: 28px;
+    left: 162px;
+    position: fixed;
+    top: 165px;
+    width: 271px;
+}
+
+.text-wrapper-title {
+    color: #f1f4f5;
+    font-family: 'Darker Grotesque', Helvetica;
+    font-size: 24px;
+    font-weight: 900;
+    left: 50%;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 40%;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    position: relative;
+    width: 311px;
+    height: 232px;
+}
+.image-so-cuu,
+.image-layout-color {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    top: 340px;
+    left: -273px;
+    border-top-right-radius: 34px;
+}
+
+.image-layout-color {
+    z-index: 1; // Tầng trên cùng
+}
+.image-so-cuu {
+    z-index: 0; // Tầng phía sau
+    filter: blur(0px); // Làm mờ
+}

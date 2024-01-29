@@ -12,9 +12,9 @@ function Header() {
         <div className={cx('header')}>
             <div className={cx('overlap-group')}>
                 <div className={cx('rectangle')}>
-                    <div className={cx('logo-SOS')}>
+                    <Link to={config.routes.home} className={cx('logo-SOS')}>
                         <img className={cx('icon-button')} src={images.logo} alt="SOS" />
-                    </div>
+                    </Link>
                     <Link
                         to={config.routes.khancap}
                         className={cx('text-khan-cap', { active: location.pathname === config.routes.khancap })}
