@@ -8,6 +8,7 @@ const routes = {
     kynang: '/kynang',
     thuchanh: '/thuchanh',
     register: '/register',
+    khancapdetail: '/khancapdetail',
 };
 
 export default routes;

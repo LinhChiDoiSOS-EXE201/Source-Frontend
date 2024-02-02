@@ -13,6 +13,11 @@ const images = {
     iconSearchWhiteColor: require('~/assets/images/iconSearchInChuanDoan.svg').default,
     nguyenTacSoCuu: require('~/assets/images/socapcuu/nguyenTacSoCuu.svg').default,
     layoutColor: require('~/assets/images/socapcuu/layoutColor.svg').default,
+    // dienthoai: require('~/assets/images/dienthoaiicon.svg').default,
+    nexticon: require('~/assets/images/next-icon.svg').default,
+    chuongbao: require('~/assets/images/chuongbao.svg').default,
+    chan: require('~/assets/images/chan.svg').default,
+    hoahoan_1: require('~/assets/images/71e681b8-480d-4606-9140-46c54875984e.png').default,
 };
 
 export default images;
