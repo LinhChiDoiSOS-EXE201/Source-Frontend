@@ -3,13 +3,15 @@ import styles from './KhapCapDetail.module.scss';
 import images from '~/assets/images';
 import ContentDetail from '~/components/ContentDetail';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const cx = classNames.bind(styles);
 
 function KhanCapDetail() {
     let urlParams = new URLSearchParams(window.location.search);
     let emergencyId = urlParams.get('emergencyId');
+    const colorRef1 = useRef();
+
     console.log(emergencyId);
 
     const [data, setData] = useState(null);
@@ -28,8 +30,14 @@ function KhanCapDetail() {
         fetchData();
     }, [emergencyId]);
 
-    const currentItem = data && data.find((item) => item.step === currentStep);
+    let currentItem = data && data.find((item) => item.step === currentStep);
+    console.log('ahihi');
     console.log(currentItem);
+    const maxStep = data && Math.max(...data.map((item) => item.step));
+    console.log(maxStep);
+    const handleClick = async () => {
+        window.location.href = `/khancap`;
+    };
 
     return (
         <div className={cx('box')}>
@@ -51,10 +59,33 @@ function KhanCapDetail() {
                         answerContentModelOfEDs={currentItem.answerContentModelOfEDs}
                     />
                 )}
-                <button className={cx('next-button')} onClick={() => setCurrentStep(currentStep + 1)}>
-                    <p className={cx('p-next')}>Tiếp </p>
-                    <img alt="next-icon" src={images.nexticon} />
-                </button>
+                {currentStep === maxStep ? (
+                    <button ref={colorRef1} className={cx('next-button-back')} onClick={handleClick}>
+                        <p className={cx('p-next')}>Quay lại trang chủ</p>
+                        <img alt="next-icon" src={images.nexticon} />
+                    </button>
+                ) : currentItem !== null && currentItem.isSafe === true ? (
+                    <button className={cx('next-button-safe')} onClick={() => setCurrentStep(currentStep + 1)}>
+                        <p className={cx('p-next')}>Tiếp </p>
+                        <img alt="next-icon" src={images.nexticon} />
+                    </button>
+                ) : (
+                    <button className={cx('next-button')} onClick={() => setCurrentStep(currentStep + 1)}>
+                        <p className={cx('p-next')}>Tiếp </p>
+                        <img alt="next-icon" src={images.nexticon} />
+                    </button>
+                )}
+                {/* {currentStep === maxStep ? (
+                    <button ref={colorRef1} className={cx('next-button-back')} onClick={handleClick}>
+                        <p className={cx('p-next')}>Quay lại trang chủ</p>
+                        <img alt="next-icon" src={images.nexticon} />
+                    </button>
+                ) : (
+                    <button className={cx('next-button')} onClick={() => setCurrentStep(currentStep + 1)}>
+                        <p className={cx('p-next')}>Tiếp </p>
+                        <img alt="next-icon" src={images.nexticon} />
+                    </button>
+                )} */}
             </div>
         </div>
     );

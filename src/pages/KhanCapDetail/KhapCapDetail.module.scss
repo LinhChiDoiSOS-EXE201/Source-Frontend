@@ -28,6 +28,67 @@
     border-radius: 15px;
     background: #f23929;
 }
+.rectangle .next-button-safe {
+    position: absolute; // change this line
+    top: 80%; // adjust as needed
+    right: 5%; // adjust as needed
+    border-color: #025b67;
+
+    width: 169px;
+    height: 53px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #025b67;
+}
+.next-button-safe .p-next {
+    top: -10%;
+    left: 10px;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Darker Grotesque';
+    font-weight: 900;
+    color: rgba(241, 244, 245, 1);
+    position: relative;
+    width: 102px;
+    height: 14px;
+}
+.next-button-safe img {
+    margin-top: -8%;
+    margin-left: 40%;
+}
+.rectangle .next-button-back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute; // change this line
+    top: 80%; // adjust as needed
+    right: 5%; // adjust as needed
+    border-color: #025b67;
+    width: 25%;
+    height: 53px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #025b67;
+    padding-bottom: 0.5%;
+}
+.next-button-back .p-next {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Darker Grotesque';
+    font-weight: 900;
+    color: rgba(241, 244, 245, 1);
+    position: relative;
+    width: 80%;
+    text-wrap: nowrap;
+    padding-left: 0.5%;
+}
+.next-button-back img {
+    position: relative;
+    margin-top: 1.5%;
+    padding-left: 0.5%;
+    //margin-left: 40%;
+}
 .next-button .p-next {
     top: -10%;
     left: 10px;
