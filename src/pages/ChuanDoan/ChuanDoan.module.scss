@@ -38,26 +38,23 @@
     top: 180px;
     width: 735px;
     transform: translate(-50%, -50%);
+    padding: 0 59px;
+
+    input {
+        color: black;
+        font-family: 'Darker Grotesque', Helvetica;
+        font-size: 20px;
+        font-weight: 500;
+        height: 100%;
+        width: 600px;
+        border: none;
+        //outline: none;
+        background-color: transparent;
+    }
 }
 .icon-search {
-    height: 23px;
-    left: 20px;
-    position: fixed;
-    top: 14px;
-    width: 23px;
-}
-.text-wrapper-search {
-    color: #0000004c;
-    font-family: 'Darker Grotesque', Helvetica;
-    font-size: 20px;
-    font-weight: 500;
-    left: 55px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: fixed;
-    top: 9px;
-    white-space: nowrap;
-    width: 328px;
+    height: 100%;
+    width: 54px;
 }
 
 .search-button {
