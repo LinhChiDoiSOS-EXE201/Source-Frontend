@@ -1,21 +1,55 @@
 import noti from '~/assets/images/noti.svg';
 import setting from '~/assets/images/setting.svg';
-import avt from '~/assets/images/avt.svg';
 import avtTemp1 from '~/assets/images/avtTemp1.svg';
 import avtTemp2 from '~/assets/images/avtTemp2.svg';
 import tableTemp from '~/assets/images/tableTemp.svg';
 import './Profile.scss';
+import { useEffect, useState } from 'react';
+import { axiosPrivate } from '~/api/axiosInstance';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import config from '~/config';
+import { USERDETAIL } from '~/utils/apiContrants';
+import jwtDecode from 'jwt-decode';
 
 function Profile() {
+    const [user, setUser] = useState({});
+    const [customer, setCustomer] = useState({});
+    const [isPaid, setIsPaid] = useState(false);
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = jwtDecode(loginInfo.accessToken);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const getUser = async () => {
+            if (loginInfo !== null) {
+                const param = { id: decode.Id };
+                const id = decode.Id;
+                try {
+                    const response = await axiosPrivate.get(`${USERDETAIL}/${id}`);
+                    setUser(response.data.customerData);
+                    setCustomer(response.data.applicationUserData);
+                    setIsPaid(response.data.customerData.isPaid);
+                } catch (e) {
+                    console.error(`Error at getUser:`);
+                }
+            } else {
+                toast.error('not allow');
+                navigate(config.routes.home);
+            }
+        };
+        getUser();
+    }, [loginInfo, decode.Id, navigate]);
+
     return (
         <div className="container">
             <div className="infoBlock">
                 <div className="leftSide">
                     <div className="blockAvt">
-                        <img src={avt} alt="" />
+                        <img src={customer.image} alt="" />
                     </div>
                     <div className="blockName">
-                        <p className="name">Cẩm Pua</p>
+                        <p className="name">{customer.userName}</p>
                         <p className="desc">Đã tự bảo vệ bản thân được 101 ngày</p>
                     </div>
                 </div>
@@ -78,17 +112,31 @@ function Profile() {
                             </div>
                         </div>
                     </div>
-                    <div className="learningCourse">
-                        <p className="title">Khóa học đang theo học</p>
-                        <div className="courses">
-                            <div className="course">
-                                <img src={avtTemp1} alt="" />
-                            </div>
-                            <div className="course">
-                                <img src={avtTemp2} alt="" />
+                    {isPaid ? (
+                        <div className="learningCourse">
+                            <p className="title">Khóa học đang theo học preminum</p>
+                            <div className="courses">
+                                <div className="course">
+                                    <img src={avtTemp1} alt="" />
+                                </div>
+                                <div className="course">
+                                    <img src={avtTemp2} alt="" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="learningCourse">
+                            <p className="title">Khóa học đang theo học</p>
+                            <div className="courses">
+                                <div className="course">
+                                    <img src={avtTemp1} alt="" />
+                                </div>
+                                <div className="course">
+                                    <img src={avtTemp2} alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className="rightSide">
                     <img src={tableTemp} alt="" />

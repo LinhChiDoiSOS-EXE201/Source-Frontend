@@ -154,7 +154,14 @@
     position: absolute;
     top: 37px;
     width: 35px;
+    &.active {
+        background-color: hsl(8, 85%, 80%);
+    }
+    &:hover {
+        background-color: hsl(8, 85%, 80%);
+    }
 }
+
 .ellipse-user {
     left: 90%;
 }

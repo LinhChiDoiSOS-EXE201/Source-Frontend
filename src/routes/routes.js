@@ -9,6 +9,7 @@ import ThucHanh from '~/pages/ThucHanh';
 import Login from '~/pages/Login';
 import Register from '~/pages/Register';
 import KhanCapDetail from '~/pages/KhanCapDetail';
+import Payment from '~/pages/Payment';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -27,6 +28,7 @@ const publicRoutes = [
     { path: config.routes.thuchanh, component: ThucHanh },
     { path: config.routes.register, component: Register },
     { path: config.routes.khancapdetail, component: KhanCapDetail },
+    { path: config.routes.payment, component: Payment },
 ];
 
 const privateRoutes = [];

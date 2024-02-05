@@ -1,0 +1,161 @@
+.infoBlock {
+    margin: 10px 0;
+    margin-top: 70px;
+    padding: 300px 600px;
+    position: relative;
+
+    > .leftSide,
+    > .rightSide {
+        position: absolute;
+        top: -400px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    > .leftSide {
+        left: 10%;
+        gap: 50px;
+
+        > .blockName {
+            white-space: nowrap;
+            color: #025b67;
+            font-family: 'Darker Grotesque';
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+        > .blockName-1 {
+            position: absolute;
+            white-space: nowrap;
+            color: #ff0000;
+            font-family: 'Darker Grotesque', Helvetica;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            margin-top: 100px;
+            max-width: 100%;
+            left: 15px;
+        }
+        > .blockName-rectangle {
+            position: absolute;
+            margin-top: 450px;
+            background: #ffff;
+            padding: 30px 50px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            width: 627px;
+            height: 236px;
+            left: 50%;
+            transform: translateX(-55%);
+            display: flex;
+            align-items: center;
+            > .blockName-2 {
+                font-family: 'Darker Grotesque';
+                font-size: 26px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+                text-align: center;
+                position: absolute;
+                left: 92px;
+                top: 20px;
+            }
+        }
+
+        > .blockName-3 {
+            position: absolute;
+            white-space: nowrap;
+            margin-top: 750px;
+            font-family: 'Darker Grotesque';
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            text-align: center;
+            left: 100px;
+        }
+
+        > .blockName-premium {
+            background: #f9d100;
+            position: absolute;
+            margin-top: 890px;
+            width: 627px;
+            height: 86px;
+            left: -160px;
+            border-radius: 10px;
+            > .blockName-4 {
+                position: absolute;
+                white-space: nowrap;
+                font-family: 'Darker Grotesque';
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 10px;
+            }
+            > .blockName-5 {
+                position: absolute;
+                white-space: nowrap;
+                font-family: 'Darker Grotesque';
+                font-size: 24px;
+                font-style: italic;
+                font-weight: 600;
+                line-height: normal;
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 40px;
+            }
+        }
+    }
+
+    > .rightSide {
+        right: 10%;
+        justify-content: space-evenly;
+        > div {
+            display: flex;
+            gap: 10px;
+            color: #000000;
+            font-family: 'Darker Grotesque';
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        > img {
+            position: absolute;
+            margin-top: 400px;
+            max-width: 100%;
+        }
+
+        > .blockName-button-payment {
+            position: absolute;
+            background: #440c11;
+            margin-top: 900px;
+            height: 60px;
+            width: 366px;
+            border-radius: 10px;
+            > .blockName-6 {
+                position: absolute;
+                white-space: nowrap;
+                color: #ffffff;
+                font-family: 'Darker Grotesque';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 15px;
+            }
+        }
+    }
+}

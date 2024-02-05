@@ -9,6 +9,7 @@ const routes = {
     thuchanh: '/thuchanh',
     register: '/register',
     khancapdetail: '/khancapdetail',
+    payment: '/payment',
 };
 
 export default routes;

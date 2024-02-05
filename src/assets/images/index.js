@@ -13,6 +13,8 @@ const images = {
     iconSearchWhiteColor: require('~/assets/images/iconSearchInChuanDoan.svg').default,
     nguyenTacSoCuu: require('~/assets/images/socapcuu/nguyenTacSoCuu.svg').default,
     layoutColor: require('~/assets/images/socapcuu/layoutColor.svg').default,
+    payment: require('~/assets/images/payment.svg').default,
+
     // dienthoai: require('~/assets/images/dienthoaiicon.svg').default,
     nexticon: require('~/assets/images/next-icon.svg').default,
     chuongbao: require('~/assets/images/chuongbao.svg').default,
