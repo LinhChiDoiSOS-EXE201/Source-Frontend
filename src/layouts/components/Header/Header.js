@@ -18,6 +18,7 @@ function Header() {
             const loginInfo = JSON.parse(storedLoginInfo);
             const user = jwtDecode(loginInfo.accessToken);
             const isExpired = user.exp > Date.now() / 1000;
+            console.log(isExpired);
             if (isExpired) {
                 setLoggedIn(true);
             } else {

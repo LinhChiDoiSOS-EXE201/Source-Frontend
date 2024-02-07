@@ -1,47 +1,119 @@
-.rectangle-title {
+// .rectangle-title {
+//     background-color: #f23929;
+//     border-radius: 14px;
+//     height: 28px;
+//     left: 162px;
+//     position: fixed;
+//     top: 165px;
+//     width: 271px;
+//     flex-direction: column;
+// }
+// .category-item {
+//     margin-bottom: 20px; /* Để tạo khoảng cách giữa các danh mục */
+// }
+
+// .text-wrapper-title {
+//     color: #f1f4f5;
+//     font-family: 'Darker Grotesque', Helvetica;
+//     font-size: 24px;
+//     font-weight: 900;
+//     left: 50%;
+//     letter-spacing: 0;
+//     line-height: normal;
+//     position: absolute;
+//     top: 40%;
+//     white-space: nowrap;
+//     transform: translate(-50%, -50%);
+// }
+
+// .container {
+//     position: relative;
+//     width: 311px;
+//     height: 232px;
+// }
+// .image-so-cuu,
+// .image-layout-color {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     transform: translate(-50%, -50%);
+//     top: 340px;
+//     left: -273px;
+//     border-top-right-radius: 34px;
+// }
+
+// .image-layout-color {
+//     z-index: 1; // Tầng trên cùng
+// }
+// .image-so-cuu {
+//     z-index: 0; // Tầng phía sau
+//     filter: blur(0px); // Làm mờ
+// }
+.categories-container {
+    display: flex;
+    flex-direction: column; /* Hiển thị các danh mục theo hàng dọc */
+    margin-top: 150px;
+}
+
+.category {
+    margin-bottom: 20px; /* Để tạo khoảng cách giữa các danh mục */
+}
+
+.category-name {
     background-color: #f23929;
+    color: #fff; /* Màu của category name */
+    font-size: 24px; /* Cỡ chữ của category name */
+    font-weight: bold; /* Độ đậm của category name */
     border-radius: 14px;
     height: 28px;
-    left: 162px;
-    position: fixed;
-    top: 165px;
     width: 271px;
-}
-
-.text-wrapper-title {
-    color: #f1f4f5;
-    font-family: 'Darker Grotesque', Helvetica;
-    font-size: 24px;
-    font-weight: 900;
-    left: 50%;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 40%;
-    white-space: nowrap;
-    transform: translate(-50%, -50%);
-}
-
-.container {
+    left: 0;
+    top: 70px;
     position: relative;
-    width: 311px;
-    height: 232px;
-}
-.image-so-cuu,
-.image-layout-color {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    top: 340px;
-    left: -273px;
-    border-top-right-radius: 34px;
+    display: flex; /* Hiển thị các phần tử con theo dạng flex */
+    align-items: center; /* Canh chỉnh các phần tử con theo trục dọc */
+    justify-content: center;
 }
 
-.image-layout-color {
-    z-index: 1; // Tầng trên cùng
+.course-list {
+    display: flex;
+    flex-direction: row; /* Hiển thị các mục từ trái sang phải */
+    overflow-x: auto; /* Cho phép cuộn ngang nếu nội dung vượt quá chiều rộng của container */
+    padding: 0; /* Xóa padding mặc định của danh sách */
+    list-style-type: none; /* Xóa dấu hiệu li trên danh sách */
 }
-.image-so-cuu {
-    z-index: 0; // Tầng phía sau
-    filter: blur(0px); // Làm mờ
+
+.course-item {
+    position: relative; /* Đặt vị trí tương đối cho mỗi khóa học */
+    margin-right: 20px; /* Để tạo khoảng cách giữa các khóa học */
+    flex: 0 0 auto; /* Cho phép khóa học có kích thước tự động */
+    width: 311px; /* Đặt chiều rộng của mỗi khóa học */
+    border-radius: 8px; /* Đưa ra viền cong cho hình ảnh */
+    overflow: hidden; /* Ẩn phần vượt quá của course name */
+}
+
+.course-image {
+    border-radius: 8px; /* Đưa ra viền cong cho hình ảnh */
+    overflow: hidden; /* Ẩn phần vượt quá của course name */
+}
+
+.course-image img {
+    width: 100%; /* Đảm bảo hình ảnh sẽ lấp đầy khung */
+}
+
+.course-name {
+    position: absolute; /* Đặt vị trí tuyệt đối cho course name */
+    bottom: 0; /* Đặt vị trí dưới của course name */
+    left: 0; /* Đặt vị trí bên trái của course name */
+    width: 100%; /* Đảm bảo course name lấp đầy chiều rộng của hình ảnh */
+    padding: 5px; /* Tăng khoảng cách với viền của hình ảnh */
+    background-color: rgba(0, 0, 0, 0.5); /* Đặt màu nền cho course name */
+    color: #ffffff; /* Đặt màu chữ cho course name */
+    font-size: 14px; /* Đặt kích thước chữ cho course name */
+    transition: bottom 0.3s; /* Thêm hiệu ứng chuyển động khi hover */
+}
+
+.course-item:hover .course-name {
+    bottom: 50%; /* Di chuyển course name lên giữa khi hover */
+    transform: translateY(-50%); /* Đảm bảo course name được căn giữa theo trục y */
 }
