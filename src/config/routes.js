@@ -7,6 +7,7 @@ const routes = {
     chuandoan: '/chuandoan',
     kynang: '/kynang',
     thuchanh: '/thuchanh',
+    thuchanhdetail: '/thuchanh/:id',
     register: '/register',
     khancapdetail: '/khancapdetail',
     payment: '/payment',

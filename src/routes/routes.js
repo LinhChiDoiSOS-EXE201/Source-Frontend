@@ -10,6 +10,7 @@ import Login from '~/pages/Login';
 import Register from '~/pages/Register';
 import KhanCapDetail from '~/pages/KhanCapDetail';
 import Payment from '~/pages/Payment';
+import ThucHanhDetail from '~/pages/ThucHanhDetail';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -26,6 +27,7 @@ const publicRoutes = [
     { path: config.routes.chuandoan, component: ChuanDoan },
     { path: config.routes.kynang, component: KyNang },
     { path: config.routes.thuchanh, component: ThucHanh },
+    { path: config.routes.thuchanhdetail, component: ThucHanhDetail },
     { path: config.routes.register, component: Register },
     { path: config.routes.khancapdetail, component: KhanCapDetail },
     { path: config.routes.payment, component: Payment },

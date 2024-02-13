@@ -1,0 +1,74 @@
+.thucHanhDetail {
+    height: 70%;
+    width: 82.5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10%;
+    font-family: 'Darker Grotesque', sans-serif;
+    margin: 15% auto 6% auto;
+
+    .detail-img {
+        height: 100%;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .detail-content {
+        margin-top: 8%;
+
+        .title,
+        .workplace {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .workplace {
+            margin-top: 10px;
+        }
+
+        .name {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 90%;
+        }
+
+        .content {
+            font-size: 16px;
+            padding: 12px 12px 12px 0;
+        }
+
+        .contact-btn {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20;
+            font-weight: 600;
+            background: #f23929;
+            width: 305px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            line-height: 0;
+            margin-top: 20px;
+
+            &:hover {
+                background: #f23929;
+                width: 315px;
+                height: 60px;
+                font-size: 21px;
+                font-weight: 600;
+                transform: translate(-5px, -5px);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}

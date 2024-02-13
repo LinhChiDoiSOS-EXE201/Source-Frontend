@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 function KyNang() {
     const [categories, setCategory] = useState(null);
     const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
-    const decode = jwtDecode(loginInfo.accessToken);
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
     const navigate = useNavigate();
 
     useEffect(() => {
