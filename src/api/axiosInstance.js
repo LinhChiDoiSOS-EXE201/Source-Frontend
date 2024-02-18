@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 //const BASE_URL = 'https://localhost:7250';
 
-const BASE_URL = 'https://soslinhchidoi.azurewebsites.net';
+const BASE_URL = 'https://linhchidoi.azurewebsites.net';
 
 const axiosPublic = axios.create({
     baseURL: BASE_URL,
