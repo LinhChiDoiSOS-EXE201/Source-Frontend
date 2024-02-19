@@ -6,4 +6,4 @@ export const REGISTER = '/api/v1/customers/register';
 export const USERDETAIL = '/api/v1/customers';
 
 //category
-export const GETALLCOURSE = '/api/v1/course';
+export const GETALLCOURSE = '/api/v1/course/all';
