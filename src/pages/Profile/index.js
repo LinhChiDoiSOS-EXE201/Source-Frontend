@@ -4,21 +4,41 @@ import avtTemp1 from '~/assets/images/avtTemp1.svg';
 import avtTemp2 from '~/assets/images/avtTemp2.svg';
 import tableTemp from '~/assets/images/tableTemp.svg';
 import './Profile.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useHistory } from 'react';
 import { axiosPrivate } from '~/api/axiosInstance';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import config from '~/config';
 import { USERDETAIL } from '~/utils/apiContrants';
 import jwtDecode from 'jwt-decode';
+import images from '~/assets/images';
 
 function Profile() {
     const [user, setUser] = useState({});
     const [customer, setCustomer] = useState({});
-    const [isPaid, setIsPaid] = useState(false);
+    // const [isPaid, setIsPaid] = useState(false);
+    //Test
+    const [isPaid, setIsPaid] = useState(true);
+    //Test
     const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     const decode = jwtDecode(loginInfo.accessToken);
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleButtonClick = () => {
+        setIsLoading(true);
+    };
+
+    useEffect(() => {
+        if (isLoading) {
+            // After 2 seconds, navigate and stop the loading animation
+            setTimeout(() => {
+                navigate(config.routes.payment);
+                setIsLoading(false);
+            }, 500);
+        }
+    }, [isLoading, navigate]);
 
     useEffect(() => {
         const getUser = async () => {
@@ -112,16 +132,23 @@ function Profile() {
                             </div>
                         </div>
                     </div>
-                    {isPaid ? (
+                    {/* {isPaid ? (
+                        Test */}
+                    {!isPaid ? (
                         <div className="learningCourse">
-                            <p className="title">Khóa học đang theo học preminum</p>
-                            <div className="courses">
-                                <div className="course">
-                                    <img src={avtTemp1} alt="" />
-                                </div>
-                                <div className="course">
-                                    <img src={avtTemp2} alt="" />
-                                </div>
+                            <div className="container-updatepremium">
+                                <button className="updatePremium" onClick={handleButtonClick}>
+                                    <div>
+                                        <img alt="premium" src={images.premium} />
+                                        <p>Nâng cấp Premium</p>
+                                    </div>
+                                </button>
+                                {isLoading && <div className="loading">Loading...</div>}
+                                <img
+                                    className="logowithContentInside"
+                                    alt="logowithContentInside"
+                                    src={images.logowithContentInside}
+                                />
                             </div>
                         </div>
                     ) : (
@@ -139,7 +166,20 @@ function Profile() {
                     )}
                 </div>
                 <div className="rightSide">
-                    <img src={tableTemp} alt="" />
+                    {/* {isPaid ? (
+                        Test */}
+                    {!isPaid ? (
+                        <div className="container-right-updatepremium">
+                            <p className="only10K">
+                                Chỉ với 10k/tháng, bạn đã có thể mở tài khoản Premium và khám phá tất cả tính năng của
+                                Khẩn Cấp SOS
+                            </p>
+                            <img alt="premium" src={images.loiichkhinangcap} />
+                            <img alt="premium" src={images.loiich} />
+                        </div>
+                    ) : (
+                        <img src={tableTemp} alt="" />
+                    )}
                 </div>
             </div>
         </div>
