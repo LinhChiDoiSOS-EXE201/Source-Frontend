@@ -22,7 +22,7 @@ function KyNang() {
                 const id = decode.Id;
                 console.log(id);
                 try {
-                    const response = await axiosPublic.get(`${GETALLCOURSE}/${id}`);
+                    const response = await axiosPublic.get(`${GETALLCOURSE}`);
                     if (response.status === 200) {
                         setCategory(response.data);
                     }

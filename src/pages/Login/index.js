@@ -6,9 +6,9 @@ import * as Yup from 'yup';
 import config from '~/config';
 import { useFormik } from 'formik';
 import { axiosPublic } from '~/api/axiosInstance';
-import { LOGIN } from '~/utils/apiContrants';
+import { LOGIN, REGISTER } from '~/utils/apiContrants';
 import jwtDecode from 'jwt-decode';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Box, CircularProgress } from '@mui/material';
@@ -55,6 +55,50 @@ function Login() {
             }
         },
     });
+
+    // const [user, setUser] = useState({});
+    function handleCallbackResponse(response) {
+        console.log('Id Token: ' + response.credential);
+        var userObject = jwtDecode(response.credential);
+        console.log(userObject);
+        // setUser(userObject);
+
+        //register
+        // registerUser(userObject);
+        // login
+    }
+    async function registerUser(user) {
+        try {
+            const response = await axiosPublic.post(REGISTER, {
+                phone: user.phone,
+                email: user.email,
+                password: user.password,
+                userName: user.email,
+                fullname: user.name,
+            });
+
+            console.log('User registered:', response.data);
+            navigate(config.routes.profile);
+            // login luon vao he thong
+        } catch (error) {
+            console.error('Registration failed:', error);
+            setText('Đăng ký không thành công');
+            setOpen(true);
+        }
+    }
+    useEffect(() => {
+        window.google.accounts.id.initialize({
+            client_id: '116293461322-c1in4rounefu5vpva1rv3f8o0jkplsvd.apps.googleusercontent.com',
+            callback: handleCallbackResponse,
+        });
+
+        window.google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+            theme: 'outline',
+            size: 'large',
+        });
+
+        window.google.accounts.id.prompt();
+    }, []);
     return (
         <div className={cx('NG-NHP')}>
             <div className={cx('div-2')}>
@@ -136,7 +180,7 @@ function Login() {
                                 <div className={cx('group-10')}>
                                     <div className={cx('overlap-group-2')}>
                                         <div className={cx('text-wrapper-22')}>Google</div>
-                                        <img className={cx('vector-3')} alt="Vector" src={images.logoGoogle} />
+                                        <div id="signInDiv"></div>
                                     </div>
                                 </div>
                             </div>
