@@ -14,6 +14,10 @@ const images = {
     nguyenTacSoCuu: require('~/assets/images/socapcuu/nguyenTacSoCuu.svg').default,
     layoutColor: require('~/assets/images/socapcuu/layoutColor.svg').default,
     payment: require('~/assets/images/payment.svg').default,
+    premium: require('~/assets/images/premium.svg').default,
+    logowithContentInside: require('~/assets/images/logowithContentInside.svg').default,
+    loiichkhinangcap: require('~/assets/images/loiichkhinangcap.svg').default,
+    loiich: require('~/assets/images/4loiich.svg').default,
 
     // dienthoai: require('~/assets/images/dienthoaiicon.svg').default,
     nexticon: require('~/assets/images/next-icon.svg').default,
