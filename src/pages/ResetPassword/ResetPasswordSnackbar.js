@@ -1,0 +1,19 @@
+import { Alert, Snackbar } from '@mui/material';
+import React from 'react';
+
+const ResetPasswordSnackbar = ({ handleClose, open, text }) => {
+    return (
+        <Snackbar
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            open={open}
+            onClose={handleClose}
+            autoHideDuration={2800}
+        >
+            <Alert severity="error" variant="filled">
+                {text}
+            </Alert>
+        </Snackbar>
+    );
+};
+
+export default ResetPasswordSnackbar;
