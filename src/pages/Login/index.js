@@ -161,7 +161,9 @@ function Login() {
                                     {formik.isSubmitting ? 'Đang Đăng nhập' : 'Đăng nhập'}
                                 </Button>
                             </div>
-                            <div className={cx('text-wrapper-16')}>Quên mật khẩu?</div>
+                            <Link to={config.routes.resetpassword} className={cx('text-wrapper-16')}>
+                                Quên mật khẩu?
+                            </Link>
                             <p className={cx('text-wrapper-17')}>Hoặc đăng nhập miễn phí với</p>
                             <div className={cx('text-wrapper-18')}>Trung tâm trợ giúp</div>
                             <div className={cx('group-6')}>

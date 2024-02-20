@@ -11,6 +11,9 @@ import Register from '~/pages/Register';
 import KhanCapDetail from '~/pages/KhanCapDetail';
 import Payment from '~/pages/Payment';
 import ThucHanhDetail from '~/pages/ThucHanhDetail';
+import ResetPassword from '~/pages/ResetPassword';
+import ChangePassword from '~/pages/ChangePassword';
+import ChangePasswordSucess from '~/pages/ChangePasswordSuccess';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -31,6 +34,9 @@ const publicRoutes = [
     { path: config.routes.register, component: Register },
     { path: config.routes.khancapdetail, component: KhanCapDetail },
     { path: config.routes.payment, component: Payment },
+    { path: config.routes.resetpassword, component: ResetPassword },
+    { path: config.routes.changepassword, component: ChangePassword },
+    { path: config.routes.changepasswordsuccess, component: ChangePasswordSucess },
 ];
 
 const privateRoutes = [];
