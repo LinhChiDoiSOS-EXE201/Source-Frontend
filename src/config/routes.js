@@ -14,6 +14,7 @@ const routes = {
     resetpassword: '/resetpassword',
     changepassword: '/changepassword',
     changepasswordsuccess: '/changepasswordsuccess',
+    error: '/error',
 };
 
 export default routes;
