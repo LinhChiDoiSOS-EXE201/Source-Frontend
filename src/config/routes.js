@@ -11,6 +11,9 @@ const routes = {
     register: '/register',
     khancapdetail: '/khancapdetail',
     payment: '/payment',
+    resetpassword: '/resetpassword',
+    changepassword: '/changepassword',
+    changepasswordsuccess: '/changepasswordsuccess',
 };
 
 export default routes;
