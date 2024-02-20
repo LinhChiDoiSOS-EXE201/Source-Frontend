@@ -7,3 +7,6 @@ export const USERDETAIL = '/api/v1/customers';
 
 //category
 export const GETALLCOURSE = '/api/v1/course';
+
+//PAYMENT SEND MAIL
+export const PAYMENTSENDMAIL = 'api/v1/payment-send-mail';
