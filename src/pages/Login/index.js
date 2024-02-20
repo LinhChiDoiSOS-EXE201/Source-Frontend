@@ -56,18 +56,35 @@ function Login() {
         },
     });
 
-    // const [user, setUser] = useState({});
-    function handleCallbackResponse(response) {
-        console.log('Id Token: ' + response.credential);
-        var userObject = jwtDecode(response.credential);
-        console.log(userObject);
-        // setUser(userObject);
+    const handleCallbackResponse = async (response) => {
+        try {
+            const userObject = jwtDecode(response.credential);
+            // Kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu của bạn chưa
+            // Nếu chưa tồn tại, thêm người dùng mới vào cơ sở dữ liệu với thông tin từ Google
+            // Bạn có thể sử dụng hàm kiểm tra tồn tại người dùng của bạn ở đây
+            const userExists = await checkUserExists(userObject.email);
 
-        //register
-        // registerUser(userObject);
-        // login
-    }
-    async function registerUser(user) {
+            if (!userExists) {
+                // Nếu người dùng chưa tồn tại, thêm vào cơ sở dữ liệu
+                await registerUser(userObject);
+            }
+
+            // Sau khi xác thực và đăng ký thành công, bạn có thể tiến hành đăng nhập người dùng vào hệ thống
+            // Bạn có thể sử dụng hàm đăng nhập ở đây
+            loginUser(userObject);
+        } catch (error) {
+            console.error('Error:', error);
+            setText('Đăng nhập không thành công');
+            setOpen(true);
+        }
+    };
+
+    const checkUserExists = async (email) => {
+        // Thực hiện kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu của bạn chưa
+        // Trả về true nếu người dùng tồn tại, ngược lại trả về false
+    };
+
+    const registerUser = async (user) => {
         try {
             const response = await axiosPublic.post(REGISTER, {
                 phone: user.phone,
@@ -78,14 +95,22 @@ function Login() {
             });
 
             console.log('User registered:', response.data);
-            navigate(config.routes.profile);
-            // login luon vao he thong
+            // Nếu muốn lưu trữ thông tin đăng nhập vào session hoặc lưu trữ tùy thuộc vào cách triển khai của bạn,
+            // bạn có thể thực hiện ở đây
         } catch (error) {
             console.error('Registration failed:', error);
             setText('Đăng ký không thành công');
             setOpen(true);
         }
-    }
+    };
+
+    const loginUser = async (user) => {
+        // Thực hiện đăng nhập người dùng vào hệ thống
+        // Bạn có thể thực hiện bất kỳ logic đăng nhập nào ở đây, ví dụ lưu thông tin đăng nhập vào session
+        // Sau khi đăng nhập thành công, chuyển hướng người dùng đến trang mong muốn, ví dụ trang profile
+        navigate(config.routes.profile);
+    };
+
     useEffect(() => {
         window.google.accounts.id.initialize({
             client_id: '116293461322-c1in4rounefu5vpva1rv3f8o0jkplsvd.apps.googleusercontent.com',
