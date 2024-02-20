@@ -173,16 +173,10 @@ function Login() {
                                 <p className={cx('text-wrapper-20')}>Bạn chưa có tài khoản?</p>
                             </div>
                             <div className={cx('group-7')}>
-                                <div className={cx('group-8')}>
-                                    <div className={cx('overlap-group-2')}>
-                                        <div className={cx('text-wrapper-21')}>Facebook</div>
-                                        <img className={cx('group-9')} alt="Group" src={images.logoFacebookBold} />
-                                    </div>
-                                </div>
                                 <div className={cx('group-10')}>
                                     <div className={cx('overlap-group-2')}>
                                         <div className={cx('text-wrapper-22')}>Google</div>
-                                        <div id="signInDiv"></div>
+                                        <div id="signInDiv" className={cx('text-wrapper-signInDiv')}></div>
                                     </div>
                                 </div>
                             </div>
