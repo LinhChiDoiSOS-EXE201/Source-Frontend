@@ -24,7 +24,7 @@ function ResetPassword() {
             const response = await axiosPublic.post(RESETPASSWORD, formData);
             if (response.status === 200) {
                 toast.success(response.data.message);
-                navigate(config.routes.changepassword);
+                navigate(config.routes.changepassword, { state: { email } });
             }
         } catch (error) {
             console.log(error);
