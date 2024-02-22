@@ -16,6 +16,11 @@ function KyNang() {
     const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
     const navigate = useNavigate();
 
+    function handleClickButton(id) {
+        console.log(`id: ${id}`);
+        navigate(`/kynangdetail/${id}`);
+    }
+
     useEffect(() => {
         const getAllCategory = async () => {
             if (loginInfo !== null) {
@@ -45,7 +50,10 @@ function KyNang() {
                         <div className={cx('category-name')}>{category.name}</div>
                         <ul className={cx('course-list')}>
                             {category.courseResponses.map((course) => (
-                                <button className={cx('course-item-button')}>
+                                <button
+                                    className={cx('course-item-button')}
+                                    onClick={() => handleClickButton(course.id)}
+                                >
                                     <li key={course.id} className={cx('course-item')}>
                                         <div className={cx('course-image')}>
                                             <img src={course.image} alt="Course" />

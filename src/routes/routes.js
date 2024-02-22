@@ -15,6 +15,7 @@ import ResetPassword from '~/pages/ResetPassword';
 import ChangePassword from '~/pages/ChangePassword';
 import ChangePasswordSucess from '~/pages/ChangePasswordSuccess';
 import ErrorPage from '~/pages/ErrorPage';
+import KyNangDetail from '~/pages/HocKyNangDetail';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -39,6 +40,7 @@ const publicRoutes = [
     { path: config.routes.changepassword, component: ChangePassword },
     { path: config.routes.changepasswordsuccess, component: ChangePasswordSucess },
     { path: config.routes.error, component: ErrorPage },
+    { path: config.routes.kynangdetail, component: KyNangDetail },
 ];
 
 const privateRoutes = [];

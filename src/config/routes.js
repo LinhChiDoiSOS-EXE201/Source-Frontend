@@ -15,6 +15,7 @@ const routes = {
     changepassword: '/changepassword',
     changepasswordsuccess: '/changepasswordsuccess',
     error: '/error',
+    kynangdetail: '/kynangdetail/:id',
 };
 
 export default routes;
