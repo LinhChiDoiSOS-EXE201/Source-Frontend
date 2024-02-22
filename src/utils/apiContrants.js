@@ -25,7 +25,9 @@ export const RESETPASSWORD = '/api/v1/auth/reset-password';
 
 // change-password
 export const CHANGEPASSWORD = '/api/v1/auth/change-password';
-//export const GETALLCOURSE = '/api/v1/course';
 
 //PAYMENT SEND MAIL
 export const PAYMENTSENDMAIL = 'api/v1/payment-send-mail';
+
+//Get email to check exist
+export const GETCUSTOMERBYEMAIL = '/api/v1/customers/email';
