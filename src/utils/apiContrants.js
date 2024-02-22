@@ -31,3 +31,6 @@ export const PAYMENTSENDMAIL = 'api/v1/payment-send-mail';
 
 //Get email to check exist
 export const GETCUSTOMERBYEMAIL = '/api/v1/customers/email';
+
+//Get Course Detail
+export const GETCOURSEDETAIL = '/api/v1/course-detail';
