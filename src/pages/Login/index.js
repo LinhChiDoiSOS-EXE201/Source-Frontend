@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import config from '~/config';
 import { useFormik } from 'formik';
 import { axiosPublic } from '~/api/axiosInstance';
-import { LOGIN, REGISTER } from '~/utils/apiContrants';
+import { GETCUSTOMERBYEMAIL, LOGIN, REGISTER } from '~/utils/apiContrants';
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
@@ -59,19 +59,22 @@ function Login() {
     const handleCallbackResponse = async (response) => {
         try {
             const userObject = jwtDecode(response.credential);
-            // Kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu của bạn chưa
+            // Kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu chưa
             // Nếu chưa tồn tại, thêm người dùng mới vào cơ sở dữ liệu với thông tin từ Google
-            // Bạn có thể sử dụng hàm kiểm tra tồn tại người dùng của bạn ở đây
+            // Sử dụng hàm kiểm tra tồn tại người dùng ở đây
+            console.log(userObject);
+            console.log(userObject.email);
             const userExists = await checkUserExists(userObject.email);
-
+            console.log(userExists);
             if (!userExists) {
+                console.log(userExists);
                 // Nếu người dùng chưa tồn tại, thêm vào cơ sở dữ liệu
                 await registerUser(userObject);
             }
 
-            // Sau khi xác thực và đăng ký thành công, bạn có thể tiến hành đăng nhập người dùng vào hệ thống
-            // Bạn có thể sử dụng hàm đăng nhập ở đây
-            loginUser(userObject);
+            // Sau khi xác thực và đăng ký thành công, tiến hành đăng nhập người dùng vào hệ thống
+            // Sử dụng hàm đăng nhập ở đây
+            loginUser(response.credential);
         } catch (error) {
             console.error('Error:', error);
             setText('Đăng nhập không thành công');
@@ -80,23 +83,35 @@ function Login() {
     };
 
     const checkUserExists = async (email) => {
-        // Thực hiện kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu của bạn chưa
+        // Thực hiện kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu chưa
         // Trả về true nếu người dùng tồn tại, ngược lại trả về false
+        // call api getCustomerByEmail
+        try {
+            const response = await axiosPublic.get(`${GETCUSTOMERBYEMAIL}/${email}`);
+            console.log(response.data.customerData);
+            if (response.data.customerData) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error('Error checking user existence:', error);
+            throw new Error('Error checking user existence');
+        }
     };
-
     const registerUser = async (user) => {
         try {
             const response = await axiosPublic.post(REGISTER, {
-                phone: user.phone,
+                phone: '',
                 email: user.email,
-                password: user.password,
+                password: generateRandomPassword(12),
                 userName: user.email,
                 fullname: user.name,
             });
 
             console.log('User registered:', response.data);
-            // Nếu muốn lưu trữ thông tin đăng nhập vào session hoặc lưu trữ tùy thuộc vào cách triển khai của bạn,
-            // bạn có thể thực hiện ở đây
+            // Nếu muốn lưu trữ thông tin đăng nhập vào session hoặc lưu trữ tùy thuộc vào cách triển khai,
+            // Thực hiện ở đây
         } catch (error) {
             console.error('Registration failed:', error);
             setText('Đăng ký không thành công');
@@ -104,10 +119,21 @@ function Login() {
         }
     };
 
+    function generateRandomPassword(length) {
+        const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        return password;
+    }
+
     const loginUser = async (user) => {
         // Thực hiện đăng nhập người dùng vào hệ thống
         // Bạn có thể thực hiện bất kỳ logic đăng nhập nào ở đây, ví dụ lưu thông tin đăng nhập vào session
         // Sau khi đăng nhập thành công, chuyển hướng người dùng đến trang mong muốn, ví dụ trang profile
+        localStorage.setItem('loginInfo', JSON.stringify(user));
         navigate(config.routes.profile);
     };
 

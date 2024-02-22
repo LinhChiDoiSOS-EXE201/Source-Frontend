@@ -97,7 +97,7 @@ function ChangePassword() {
                 {errors.currentPassword && <p className={cx('error')}>{errors.currentPassword.message}</p>}
 
                 <input
-                    className={`cx('text-input-email') ${errors.email && 'error'}`}
+                    className={`cx('text-input-email') ${errors.email ? cx('error') : ''}`}
                     name="email"
                     id="email"
                     readOnly
