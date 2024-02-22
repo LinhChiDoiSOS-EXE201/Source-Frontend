@@ -80,41 +80,74 @@
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    padding: 0;
+    height: 300px;
+    width: 150%;
+    margin-bottom: -70px;
     list-style-type: none;
+}
+
+.course-item-button {
+    border: none;
+    margin-right: 2.5%;
+    height: 220px;
+    width: 271px;
+    //position: relative;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Darker Grotesque', Helvetica;
+    border-top-right-radius: 15px; /* Example value - Adjust as needed */
 }
 
 .course-item {
     position: relative;
     margin-right: 20px;
-    flex: 0 0 auto;
-    width: 311px;
-    border-radius: 8px;
+    height: 100%;
+    width: 300px;
+    border-top-right-radius: 30px; /* Example value - Adjust as needed */
     overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional for subtle shadow */
+}
+
+.course-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover*/
 }
 
 .course-image {
-    border-radius: 8px;
-    overflow: hidden;
+    width: 100%;
+    height: auto;
 }
 
 .course-image img {
-    width: 100%;
+    width: 110%;
 }
 
 .course-name {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    padding: 0px 10px 20px 0px;
+    height: 100%;
     width: 100%;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    font-size: 14px;
-    transition: bottom 0.3s;
+    top: 0%;
+    font-size: 24px;
+    opacity: 0.7;
+    background-image: linear-gradient(to bottom right, #0eb5c854 0%, #fe7651 100%);
+    color: #fff;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.course-name p {
+    margin: 0;
+    text-align: right;
+    height: 50px;
+    padding-bottom: 70px;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: 'Darker Grotesque', Helvetica;
 }
 
+/* Optional hover effect for course-name*/
 .course-item:hover .course-name {
-    bottom: 50%;
-    transform: translateY(-50%);
+    opacity: 1; /* Slightly more opaque on hover */
 }

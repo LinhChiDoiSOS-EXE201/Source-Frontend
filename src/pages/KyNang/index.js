@@ -45,12 +45,16 @@ function KyNang() {
                         <div className={cx('category-name')}>{category.name}</div>
                         <ul className={cx('course-list')}>
                             {category.courseResponses.map((course) => (
-                                <li key={course.id} className={cx('course-item')}>
-                                    <div className={cx('course-image')}>
-                                        <img src={course.image} alt="Course" />
-                                    </div>
-                                    <div className={cx('course-name')}>{course.name}</div>
-                                </li>
+                                <button className={cx('course-item-button')}>
+                                    <li key={course.id} className={cx('course-item')}>
+                                        <div className={cx('course-image')}>
+                                            <img src={course.image} alt="Course" />
+                                        </div>
+                                        <div className={cx('course-name')}>
+                                            <p>{course.name}</p>
+                                        </div>
+                                    </li>
+                                </button>
                             ))}
                         </ul>
                     </div>
