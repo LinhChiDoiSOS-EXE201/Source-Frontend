@@ -48,6 +48,10 @@
     position: relative;
     z-index: 1;
 }
+.picture-container img {
+    width: 250px;
+    height: 250px;
+}
 .box-footer-container {
     border-radius: 50px;
     width: 36%;
