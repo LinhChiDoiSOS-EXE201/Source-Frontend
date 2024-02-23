@@ -3,50 +3,311 @@ import styles from './ChuanDoan.module.scss';
 import images from '~/assets/images';
 import { useEffect, useState } from 'react';
 import Select, { components } from 'react-select';
-import { axiosPublic } from '~/api/axiosInstance';
-import { GETALLCATEGORY, TRACUU } from '~/utils/apiContrants';
+
+const data = [
+    {
+        id: 1,
+        title: 'Đầu',
+        keyword: [
+            {
+                value: 1,
+                label: 'Đau nữa đầu trước',
+            },
+            {
+                value: 2,
+                label: 'Đau nữa đầu sau',
+            },
+            {
+                value: 3,
+                label: 'Tê trán',
+            },
+            {
+                value: 4,
+                label: 'Ù tai',
+            },
+            {
+                value: 5,
+                label: 'Chóng mặt',
+            },
+        ],
+    },
+    {
+        id: 2,
+        title: 'Mắt',
+        keyword: [
+            {
+                value: 6,
+                label: 'Mắt lờ đờ',
+            },
+            {
+                value: 7,
+                label: 'Đỏ mắt',
+            },
+            {
+                value: 8,
+                label: 'Đau mắt',
+            },
+            {
+                value: 9,
+                label: 'Chảy nước mắt',
+            },
+        ],
+    },
+    {
+        id: 3,
+        title: 'Miệng',
+        keyword: [
+            {
+                value: 10,
+                label: 'Mất vị giác',
+            },
+            {
+                value: 11,
+                label: 'Tê liệt một phần môi',
+            },
+            {
+                value: 12,
+                label: 'Khó nói chuyện',
+            },
+            {
+                value: 13,
+                label: 'Răng va vào nhau',
+            },
+            {
+                value: 14,
+                label: 'Chảy máu chân răng',
+            },
+            {
+                value: 15,
+                label: 'Nóng rang cổ họng',
+            },
+            {
+                value: 16,
+                label: 'Ho khan',
+            },
+            {
+                value: 17,
+                label: 'Buồn nôn ',
+            },
+        ],
+    },
+    {
+        id: 4,
+        title: 'Xương khớp',
+        keyword: [
+            {
+                value: 18,
+                label: 'Xưng tấy ngoài da',
+            },
+            {
+                value: 19,
+                label: 'Đau nhói',
+            },
+            {
+                value: 20,
+                label: 'Không thể cử động',
+            },
+            {
+                value: 21,
+                label: 'Có tiếng lạo xạo',
+            },
+            {
+                value: 22,
+                label: 'Bầm tím',
+            },
+            {
+                value: 23,
+                label: 'Điểm gồ lên trên da',
+            },
+        ],
+    },
+    {
+        id: 5,
+        title: 'Mũi',
+        keyword: [
+            {
+                value: 24,
+                label: 'Khó thở',
+            },
+            {
+                value: 25,
+                label: 'Nghẹt mũi',
+            },
+            {
+                value: 26,
+                label: 'Sổ mũi',
+            },
+            {
+                value: 27,
+                label: 'Chảy máu cam',
+            },
+            {
+                value: 28,
+                label: 'Nước mũi có mùi hôi',
+            },
+        ],
+    },
+    {
+        id: 6,
+        title: 'Tim',
+        keyword: [
+            {
+                value: 29,
+                label: 'Đập nhanh',
+            },
+            {
+                value: 30,
+                label: 'Đau nhói nhẹ',
+            },
+            {
+                value: 31,
+                label: 'Đau nhói thường xuyên',
+            },
+            {
+                value: 32,
+                label: 'Cảm giác chèn ép',
+            },
+        ],
+    },
+];
+
+const listKeyword = [
+    {
+        value: 1,
+        label: 'Đau nữa đầu trước',
+    },
+    {
+        value: 2,
+        label: 'Đau nữa đầu sau',
+    },
+    {
+        value: 3,
+        label: 'Tê trán',
+    },
+    {
+        value: 4,
+        label: 'Ù tai',
+    },
+    {
+        value: 5,
+        label: 'Chóng mặt',
+    },
+    {
+        value: 6,
+        label: 'Mắt lờ đờ',
+    },
+    {
+        value: 7,
+        label: 'Đỏ mắt',
+    },
+    {
+        value: 8,
+        label: 'Đau mắt',
+    },
+    {
+        value: 9,
+        label: 'Chảy nước mắt',
+    },
+    {
+        value: 10,
+        label: 'Mất vị giác',
+    },
+    {
+        value: 11,
+        label: 'Tê liệt một phần môi',
+    },
+    {
+        value: 12,
+        label: 'Khó nói chuyện',
+    },
+    {
+        value: 13,
+        label: 'Răng va vào nhau',
+    },
+    {
+        value: 14,
+        label: 'Chảy máu chân răng',
+    },
+    {
+        value: 15,
+        label: 'Nóng rang cổ họng',
+    },
+    {
+        value: 16,
+        label: 'Ho khan',
+    },
+    {
+        value: 17,
+        label: 'Buồn nôn ',
+    },
+    {
+        value: 18,
+        label: 'Xưng tấy ngoài da',
+    },
+    {
+        value: 19,
+        label: 'Đau nhói',
+    },
+    {
+        value: 20,
+        label: 'Không thể cử động',
+    },
+    {
+        value: 21,
+        label: 'Có tiếng lạo xạo',
+    },
+    {
+        value: 22,
+        label: 'Bầm tím',
+    },
+    {
+        value: 23,
+        label: 'Điểm gồ lên trên da',
+    },
+    {
+        value: 24,
+        label: 'Khó thở',
+    },
+    {
+        value: 25,
+        label: 'Nghẹt mũi',
+    },
+    {
+        value: 26,
+        label: 'Sổ mũi',
+    },
+    {
+        value: 27,
+        label: 'Chảy máu cam',
+    },
+    {
+        value: 28,
+        label: 'Nước mũi có mùi hôi',
+    },
+    {
+        value: 29,
+        label: 'Đập nhanh',
+    },
+    {
+        value: 30,
+        label: 'Đau nhói nhẹ',
+    },
+    {
+        value: 31,
+        label: 'Đau nhói thường xuyên',
+    },
+    {
+        value: 32,
+        label: 'Cảm giác chèn ép',
+    },
+];
 
 const cx = classNames.bind(styles);
 function ChuanDoan() {
-    const [allCategorys, setAllCategorys] = useState([]);
-    const [listKeyword, setListKeyword] = useState([]);
-    const [chuanDoanResult, setChuanDoanResult] = useState(null);
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [forceUpdateFlag, setForceUpdateFlag] = useState(false);
-    const [isSearched, setIsSearched] = useState(false);
 
     const { IndicatorSeparator, DropdownIndicator, ClearIndicator, MultiValueRemove, ...otherComponents } = components;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axiosPublic.get(GETALLCATEGORY);
-            setAllCategorys(response.data);
-
-            const updatedListKeyword = response.data.reduce((acc, category) => {
-                return acc.concat(category.listKeywordData);
-            }, []);
-
-            const transformedListKeyword = updatedListKeyword.map((item) => ({
-                value: item.id,
-                label: item.name,
-            }));
-
-            setListKeyword(transformedListKeyword);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        console.log(selectedOptions);
-        document.querySelectorAll(`.${cx('active')}`).forEach((item) => {
-            if (selectedOptions.findIndex((x) => x.value === item.id) === -1) {
-                item.classList.remove(cx('active'));
-            }
-        });
-        selectedOptions.forEach((item) => {
-            document.getElementById(item.value).classList.add(cx('active'));
-        });
-    }, [selectedOptions]);
 
     const handleKeywordClick = async (e) => {
         if (e.target.classList.contains(cx('active'))) {
@@ -61,17 +322,24 @@ function ChuanDoan() {
     };
 
     const handleSelectChange = (selectedValues) => {
-        setIsSearched(false);
         setSelectedOptions(selectedValues);
     };
 
-    const search = async () => {
-        const keywordListData = selectedOptions.map((item) => ({ keywordId: item.value }));
-        const response = await axiosPublic.post(TRACUU, {
-            keywordListData,
+    useEffect(() => {
+        console.log(selectedOptions);
+        document.querySelectorAll(`.${cx('active')}`).forEach((item) => {
+            if (selectedOptions.findIndex((x) => x.value === item.id) === -1) {
+                item.classList.remove(cx('active'));
+            }
         });
-        setChuanDoanResult(response.data);
-        setIsSearched(true);
+        selectedOptions.forEach((item) => {
+            document.getElementById(item.value).classList.add(cx('active'));
+        });
+    }, [selectedOptions]);
+
+    const search = () => {
+        console.log(selectedOptions);
+        //fetch data
     };
 
     return (
@@ -81,6 +349,7 @@ function ChuanDoan() {
                 <br />
                 Khẩn Cấp SOS khuyến khích người bệnh đến trung tâm y tế để kiểm tra sức khỏe một cách chuẩn xác nhất.
             </p>
+
             <div className={cx('searchContainer')}>
                 <Select
                     options={listKeyword}
@@ -99,7 +368,6 @@ function ChuanDoan() {
                             borderRadius: '30px',
                             height: 'auto',
                             minHeight: '50px',
-                            padding: '5px 0',
                             fontSize: '20px',
                             fontWeight: '500',
                             fontFamily: 'Darker Grotesque',
@@ -109,72 +377,44 @@ function ChuanDoan() {
                             ...provided,
                             borderRadius: '15px',
                             paddingLeft: '10px',
-                            backgroundColor: '#fff',
+                            backgroundColor: '#7C83FD',
                         }),
                     }}
                     onChange={handleSelectChange}
                     value={selectedOptions}
                     key={forceUpdateFlag}
                 />
+
                 <button type="button" className={cx('search-button')} onClick={search}>
                     <img className={cx('icon-button-search')} alt="IconSearch" src={images.iconSearchWhiteColor} />
                     <p className={cx('label-button-search')}>Tra Cứu</p>
                 </button>
             </div>
 
-            {chuanDoanResult && isSearched ? (
-                <div className={cx('chuan-doan-result')}>
-                    <h3 className={cx('result-title')}>Chuẩn đoán được {chuanDoanResult.length} kết quả tương ứng</h3>
-                    <div className={cx('line')} />
-                    <div className={cx('result-container')}>
-                        {chuanDoanResult.map((chuanDoan) => {
-                            return (
-                                <div className={cx('result-card')} key={chuanDoan.id}>
-                                    <div className={cx('card-img')}>
-                                        <p className={cx('chuan-doan-name')}>{chuanDoan.name}</p>
-                                        <img />
-                                    </div>
-                                    <div className={cx('card-content')}>
-                                        <p className={cx('discription')}>{chuanDoan.description}</p>
-                                        <p className={cx('trieu-chung')}>Triệu chứng thường gặp</p>
-                                        <div className={cx('keyword-container')}>
-                                            {chuanDoan.keywordListData.map((keyword) => {
-                                                return <div className={cx('keyword')}>{keyword.name}</div>;
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            ) : (
-                <div className={cx('container')}>
-                    {allCategorys &&
-                        allCategorys.map((category) => {
-                            return (
-                                <div key={category.id} className={cx('body-parts')}>
-                                    <div className={cx('baby-rectangle')}>{category.name}</div>
-                                    <div className={cx('sub-container')}>
-                                        {category.listKeywordData.map((element) => {
-                                            return (
-                                                <button
-                                                    type="button"
-                                                    key={element.id}
-                                                    id={element.id}
-                                                    onClick={handleKeywordClick}
-                                                    className={cx('sub-baby-rectangle')}
-                                                >
-                                                    {element.name}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                </div>
-            )}
+            <div className={cx('container')}>
+                {data.map((item) => {
+                    return (
+                        <div key={item.id} className={cx('body-parts')}>
+                            <div className={cx('baby-rectangle')}>{item.title}</div>
+                            <div className={cx('sub-container')}>
+                                {item.keyword.map((element) => {
+                                    return (
+                                        <button
+                                            type="button"
+                                            key={element.value}
+                                            id={element.value}
+                                            onClick={handleKeywordClick}
+                                            className={cx('sub-baby-rectangle')}
+                                        >
+                                            {element.label}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }

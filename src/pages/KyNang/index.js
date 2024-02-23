@@ -16,13 +16,18 @@ function KyNang() {
     const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
     const navigate = useNavigate();
 
+    function handleClickButton(id) {
+        console.log(`id: ${id}`);
+        navigate(`/kynangdetail/${id}`);
+    }
+
     useEffect(() => {
         const getAllCategory = async () => {
             if (loginInfo !== null) {
                 const id = decode.Id;
                 console.log(id);
                 try {
-                    const response = await axiosPublic.get(`${GETALLCOURSE}/${id}`);
+                    const response = await axiosPublic.get(`${GETALLCOURSE}`);
                     if (response.status === 200) {
                         setCategory(response.data);
                     }
@@ -45,12 +50,19 @@ function KyNang() {
                         <div className={cx('category-name')}>{category.name}</div>
                         <ul className={cx('course-list')}>
                             {category.courseResponses.map((course) => (
-                                <li key={course.id} className={cx('course-item')}>
-                                    <div className={cx('course-image')}>
-                                        <img src={course.image} alt="Course" />
-                                    </div>
-                                    <div className={cx('course-name')}>{course.name}</div>
-                                </li>
+                                <button
+                                    className={cx('course-item-button')}
+                                    onClick={() => handleClickButton(course.id)}
+                                >
+                                    <li key={course.id} className={cx('course-item')}>
+                                        <div className={cx('course-image')}>
+                                            <img src={course.image} alt="Course" />
+                                        </div>
+                                        <div className={cx('course-name')}>
+                                            <p>{course.name}</p>
+                                        </div>
+                                    </li>
+                                </button>
                             ))}
                         </ul>
                     </div>

@@ -15,7 +15,7 @@ function Category() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:7250/api/v1/emergencycategorys');
+                const response = await axios.get('https://linhchidoi.azurewebsites.net/api/v1/emergencycategorys');
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data from API', error);

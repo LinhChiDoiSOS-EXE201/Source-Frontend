@@ -6,9 +6,9 @@ import * as Yup from 'yup';
 import config from '~/config';
 import { useFormik } from 'formik';
 import { axiosPublic } from '~/api/axiosInstance';
-import { LOGIN } from '~/utils/apiContrants';
+import { GETCUSTOMERBYEMAIL, LOGIN, REGISTER } from '~/utils/apiContrants';
 import jwtDecode from 'jwt-decode';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Box, CircularProgress } from '@mui/material';
@@ -55,6 +55,101 @@ function Login() {
             }
         },
     });
+
+    const handleCallbackResponse = async (response) => {
+        try {
+            const userObject = jwtDecode(response.credential);
+            // Kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu chưa
+            // Nếu chưa tồn tại, thêm người dùng mới vào cơ sở dữ liệu với thông tin từ Google
+            // Sử dụng hàm kiểm tra tồn tại người dùng ở đây
+            console.log(userObject);
+            console.log(userObject.email);
+            const userExists = await checkUserExists(userObject.email);
+            console.log(userExists);
+            if (!userExists) {
+                console.log(userExists);
+                // Nếu người dùng chưa tồn tại, thêm vào cơ sở dữ liệu
+                await registerUser(userObject);
+            }
+
+            // Sau khi xác thực và đăng ký thành công, tiến hành đăng nhập người dùng vào hệ thống
+            // Sử dụng hàm đăng nhập ở đây
+            loginUser(response.credential);
+        } catch (error) {
+            console.error('Error:', error);
+            setText('Đăng nhập không thành công');
+            setOpen(true);
+        }
+    };
+
+    const checkUserExists = async (email) => {
+        // Thực hiện kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu chưa
+        // Trả về true nếu người dùng tồn tại, ngược lại trả về false
+        // call api getCustomerByEmail
+        try {
+            const response = await axiosPublic.get(`${GETCUSTOMERBYEMAIL}/${email}`);
+            console.log(response.data.customerData);
+            if (response.data.customerData) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error('Error checking user existence:', error);
+            throw new Error('Error checking user existence');
+        }
+    };
+    const registerUser = async (user) => {
+        try {
+            const response = await axiosPublic.post(REGISTER, {
+                phone: '',
+                email: user.email,
+                password: generateRandomPassword(12),
+                userName: user.email,
+                fullname: user.name,
+            });
+
+            console.log('User registered:', response.data);
+            // Nếu muốn lưu trữ thông tin đăng nhập vào session hoặc lưu trữ tùy thuộc vào cách triển khai,
+            // Thực hiện ở đây
+        } catch (error) {
+            console.error('Registration failed:', error);
+            setText('Đăng ký không thành công');
+            setOpen(true);
+        }
+    };
+
+    function generateRandomPassword(length) {
+        const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        return password;
+    }
+
+    const loginUser = async (user) => {
+        // Thực hiện đăng nhập người dùng vào hệ thống
+        // Bạn có thể thực hiện bất kỳ logic đăng nhập nào ở đây, ví dụ lưu thông tin đăng nhập vào session
+        // Sau khi đăng nhập thành công, chuyển hướng người dùng đến trang mong muốn, ví dụ trang profile
+        localStorage.setItem('loginInfo', JSON.stringify(user));
+        navigate(config.routes.profile);
+    };
+
+    useEffect(() => {
+        window.google.accounts.id.initialize({
+            client_id: '116293461322-c1in4rounefu5vpva1rv3f8o0jkplsvd.apps.googleusercontent.com',
+            callback: handleCallbackResponse,
+        });
+
+        window.google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+            theme: 'outline',
+            size: 'large',
+        });
+
+        window.google.accounts.id.prompt();
+    }, []);
     return (
         <div className={cx('NG-NHP')}>
             <div className={cx('div-2')}>
@@ -117,7 +212,9 @@ function Login() {
                                     {formik.isSubmitting ? 'Đang Đăng nhập' : 'Đăng nhập'}
                                 </Button>
                             </div>
-                            <div className={cx('text-wrapper-16')}>Quên mật khẩu?</div>
+                            <Link to={config.routes.resetpassword} className={cx('text-wrapper-16')}>
+                                Quên mật khẩu?
+                            </Link>
                             <p className={cx('text-wrapper-17')}>Hoặc đăng nhập miễn phí với</p>
                             <div className={cx('text-wrapper-18')}>Trung tâm trợ giúp</div>
                             <div className={cx('group-6')}>
@@ -127,16 +224,10 @@ function Login() {
                                 <p className={cx('text-wrapper-20')}>Bạn chưa có tài khoản?</p>
                             </div>
                             <div className={cx('group-7')}>
-                                <div className={cx('group-8')}>
-                                    <div className={cx('overlap-group-2')}>
-                                        <div className={cx('text-wrapper-21')}>Facebook</div>
-                                        <img className={cx('group-9')} alt="Group" src={images.logoFacebookBold} />
-                                    </div>
-                                </div>
                                 <div className={cx('group-10')}>
                                     <div className={cx('overlap-group-2')}>
                                         <div className={cx('text-wrapper-22')}>Google</div>
-                                        <img className={cx('vector-3')} alt="Vector" src={images.logoGoogle} />
+                                        <div id="signInDiv" className={cx('text-wrapper-signInDiv')}></div>
                                     </div>
                                 </div>
                             </div>

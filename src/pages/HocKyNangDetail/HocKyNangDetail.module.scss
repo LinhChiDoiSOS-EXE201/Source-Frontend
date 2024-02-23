@@ -1,0 +1,54 @@
+.kynangdetail-container {
+    width: 100%; // Change this
+    //height: 50vh; // Change this
+    margin-top: 200px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    display: grid;
+}
+
+.kynangdetail-container .header {
+    font-size: 45px;
+    font-weight: 900;
+    color: #000000;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.kynangdetail-container .header-minicontent {
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 60px;
+    text-align: center;
+}
+.kynangdetail-container .children {
+    display: flex;
+    font-size: 26.7px;
+    font-weight: 500;
+    width: 50%;
+    margin: auto; // Add this
+}
+.kynangdetail-container .title {
+    display: flex;
+    font-size: 30px;
+    font-weight: 900;
+    width: 50%;
+    margin: auto; // Add this
+}
+.kynangdetail-container .imgage {
+    width: 600px;
+    height: 400px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.kynangdetail-container .paragraph {
+    margin-bottom: 40px;
+}
+.kynangdetail-container .conclusion {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}

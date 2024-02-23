@@ -7,11 +7,12 @@ import { Box, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosPublic } from '~/api/axiosInstance';
 import { REGISTER } from '~/utils/apiContrants';
 import { toast } from 'react-toastify';
 import RegisterSnackbar from './RegisterSnackbar';
+import jwtDecode from 'jwt-decode';
 
 const cx = classNames.bind(styles);
 function Register() {
@@ -76,6 +77,26 @@ function Register() {
             }
         },
     });
+
+    function handleCallbackResponse(response) {
+        console.log('Id Token: ' + response.credential);
+        var userObject = jwtDecode(response.credential);
+        console.log(userObject);
+    }
+
+    useEffect(() => {
+        window.google.accounts.id.initialize({
+            client_id: '116293461322-c1in4rounefu5vpva1rv3f8o0jkplsvd.apps.googleusercontent.com',
+            callback: handleCallbackResponse,
+        });
+
+        window.google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+            theme: 'outline',
+            size: 'large',
+        });
+
+        window.google.accounts.id.prompt();
+    }, []);
     return (
         <div className={cx('NG-k')}>
             <div className={cx('div-2')}>
@@ -195,16 +216,9 @@ function Register() {
                                 Đăng nhập
                             </Link>
                             <div className={cx('group-10')}>
-                                <div className={cx('group-11')}>
-                                    <div className={cx('overlap-group-3')}>
-                                        <div className={cx('text-wrapper-21')}>Facebook</div>
-                                        <img className={cx('group-12')} alt="Group" src={images.logoFacebookBold} />
-                                    </div>
-                                </div>
                                 <div className={cx('group-13')}>
                                     <div className={cx('overlap-group-3')}>
-                                        <div className={cx('text-wrapper-22')}>Google</div>
-                                        <img className={cx('vector-3')} alt="Vector" src={images.logoGoogle} />
+                                        <div id="signInDiv" className={cx('text-wrapper-signInDiv')}></div>
                                     </div>
                                 </div>
                             </div>
