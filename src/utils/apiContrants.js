@@ -18,3 +18,19 @@ export const GETALLCOURSE = 'api/v1/course';
 //chuan doan
 export const GETALLCATEGORY = '/api/v1/categorykeyword/list-keyword';
 export const TRACUU = '/api/v1/chuandoan/by-list-keyword-id';
+export const GETALLCOURSE = '/api/v1/course/all';
+
+//reset-password
+export const RESETPASSWORD = '/api/v1/auth/reset-password';
+
+// change-password
+export const CHANGEPASSWORD = '/api/v1/auth/change-password';
+
+//PAYMENT SEND MAIL
+export const PAYMENTSENDMAIL = 'api/v1/payment-send-mail';
+
+//Get email to check exist
+export const GETCUSTOMERBYEMAIL = '/api/v1/customers/email';
+
+//Get Course Detail
+export const GETCOURSEDETAIL = '/api/v1/course-detail';

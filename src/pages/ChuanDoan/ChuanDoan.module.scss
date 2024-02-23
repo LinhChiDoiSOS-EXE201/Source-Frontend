@@ -1,7 +1,7 @@
 .rectangle {
     background-color: #0eb5c8;
     border-radius: 63px 63px 0px 0px;
-    height: 1000px;
+    height: 800px;
     width: 1274px;
     position: relative;
     display: flex;
@@ -163,97 +163,4 @@
 
 .active {
     border: 3px solid #025b67;
-}
-
-.chuan-doan-result {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    .result-title {
-        text-align: center;
-        color: #fff;
-        font-size: 26px;
-        margin-bottom: 10px;
-    }
-
-    .line {
-        width: 60px;
-        height: 5px;
-        background: #fff;
-        margin-bottom: 30px;
-    }
-
-    .result-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 40px;
-        row-gap: 80px;
-
-        .result-card {
-            width: 465px;
-            height: fit-content;
-            min-height: 125px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .card-img {
-                width: 125px;
-                height: 125px;
-                // background-color: #fff;
-                background: url(../../assets/images/chuanDoanImg.png);
-                background-size: cover;
-                border-radius: 22px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: center;
-
-                .chuan-doan-name {
-                    color: red;
-                    text-align: center;
-                    font-size: 25px;
-                    font-weight: 800;
-                    line-height: 1;
-                    margin-bottom: 5px;
-                }
-            }
-
-            .card-content {
-                width: 330px;
-                height: 100%;
-                border: solid 1px #fff;
-                border-radius: 22px;
-                padding: 4px 15px;
-
-                .discription {
-                    font-size: 15px;
-                    text-align: center;
-                    line-height: 108%;
-                    font-weight: 500;
-                }
-
-                .trieu-chung {
-                    font-size: 15px;
-                    color: #fff;
-                    font-weight: 600;
-                    text-align: center;
-                    margin-bottom: 3px;
-                }
-
-                .keyword-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 5px;
-
-                    .keyword {
-                        border: 1px solid #000000;
-                        padding: 0 7.5px;
-                        border-radius: 10px;
-                    }
-                }
-            }
-        }
-    }
 }
