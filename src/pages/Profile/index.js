@@ -153,16 +153,32 @@ function Profile() {
                         </div>
                     ) : (
                         <div className="learningCourse">
-                            <p className="title">Khóa học đang theo học</p>
-                            <div className="courses">
-                                <div className="course">
-                                    <img src={avtTemp1} alt="" />
-                                </div>
-                                <div className="course">
-                                    <img src={avtTemp2} alt="" />
-                                </div>
+                            <div className="container-updatepremium">
+                                <button className="updatePremium" onClick={handleButtonClick}>
+                                    <div>
+                                        <img alt="premium" src={images.premium} />
+                                        <p>Nâng cấp Premium</p>
+                                    </div>
+                                </button>
+                                {isLoading && <div className="loading">Loading...</div>}
+                                <img
+                                    className="logowithContentInside"
+                                    alt="logowithContentInside"
+                                    src={images.logowithContentInside}
+                                />
                             </div>
                         </div>
+                        // <div className="learningCourse">
+                        //     <p className="title">Khóa học đang theo học</p>
+                        //     <div className="courses">
+                        //         <div className="course">
+                        //             <img src={avtTemp1} alt="" />
+                        //         </div>
+                        //         <div className="course">
+                        //             <img src={avtTemp2} alt="" />
+                        //         </div>
+                        //     </div>
+                        // </div>
                     )}
                 </div>
                 <div className="rightSide">
@@ -178,7 +194,15 @@ function Profile() {
                             <img alt="premium" src={images.loiich} />
                         </div>
                     ) : (
-                        <img src={tableTemp} alt="" />
+                        // <img src={tableTemp} alt="" />
+                        <div className="container-right-updatepremium">
+                            <p className="only10K">
+                                Chỉ với 10k/tháng, bạn đã có thể mở tài khoản Premium và khám phá tất cả tính năng của
+                                Khẩn Cấp SOS
+                            </p>
+                            <img alt="premium" src={images.loiichkhinangcap} />
+                            <img alt="premium" src={images.loiich} />
+                        </div>
                     )}
                 </div>
             </div>

@@ -28,7 +28,7 @@ function Payment() {
             console.log(decode);
             formData.append('Email', decode.email);
             const response = await axiosPublic.post(PAYMENTSENDMAIL, formData);
-            navigate(config.routes.home);
+            navigate(config.routes.khancap);
         } catch (error) {
             console.error('Failed to send email:', error);
         }
