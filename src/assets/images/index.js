@@ -148,7 +148,32 @@ const images = {
     ngodoc_main_step_3: require('~/assets/images/ngodoc/ngodoc_main_step_3.svg').default,
     ngodoc_main_step_4: require('~/assets/images/ngodoc/ngodoc_main_step_4.svg').default,
     ngodoc_main_step_5: require('~/assets/images/ngodoc/ngodoc_main_step_5.svg').default,
-    //
+    //That nut
+    thatnutdaythuyendai_main_step_1: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_1.svg')
+        .default,
+    thatnutdaythuyendai_main_step_2: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_2.svg')
+        .default,
+    thatnutdaythuyendai_main_step_3: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_3.svg')
+        .default,
+    //SOS
+    sos_main_step_1: require('~/assets/images/sos/sos_main_step_1.svg').default,
+    sos_main_step_2: require('~/assets/images/sos/sos_main_step_2.svg').default,
+    //Tao lua
+    taolua_main_step_1: require('~/assets/images/taolua/taolua_main_step_1.svg').default,
+    taolua_main_step_2: require('~/assets/images/taolua/taolua_main_step_2.svg').default,
+    //Xac dinh phuong huong
+    xacdinhphuonghuong_main_step_1: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_1.svg')
+        .default,
+    xacdinhphuonghuong_main_step_2: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_2.svg')
+        .default,
+    xacdinhphuonghuong_main_step_3: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_3.svg')
+        .default,
+    xacdinhphuonghuong_main_step_4: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_4.svg')
+        .default,
+    xacdinhphuonghuong_main_step_5: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_5.svg')
+        .default,
+    xacdinhphuonghuong_main_step_6: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_6.svg')
+        .default,
     socphanve_step_1_mini_content_1: require('~/assets/images/socpv/socphanve_step_1_mini_content_1.svg').default,
     socphanve_step_1_mini_content_2: require('~/assets/images/socpv/socphanve_step_1_mini_content_2.svg').default,
     socphanve_step_1_mini_content_3: require('~/assets/images/socpv/socphanve_step_1_mini_content_3.svg').default,
