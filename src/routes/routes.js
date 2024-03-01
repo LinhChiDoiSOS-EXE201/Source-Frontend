@@ -16,6 +16,7 @@ import ChangePassword from '~/pages/ChangePassword';
 import ChangePasswordSucess from '~/pages/ChangePasswordSuccess';
 import ErrorPage from '~/pages/ErrorPage';
 import KyNangDetail from '~/pages/HocKyNangDetail';
+import AdminDashboard from '~/pages/AdminDashboard';
 
 const publicRoutes = [
     // { path: '/', component: Home },
@@ -43,6 +44,6 @@ const publicRoutes = [
     { path: config.routes.kynangdetail, component: KyNangDetail },
 ];
 
-const privateRoutes = [];
+const privateRoutes = [{ path: config.routes.admin, component: AdminDashboard }];
 
 export { publicRoutes, privateRoutes };

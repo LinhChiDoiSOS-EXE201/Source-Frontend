@@ -1,0 +1,270 @@
+.navbarTop {
+    background-color: white;
+    margin-top: 2rem;
+    width: 100%;
+    height: 70px;
+    // border: 1px solid black;
+    padding: 0 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left-side {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo-container {
+            position: relative;
+            height: 100%;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .logo {
+                height: 150%;
+                width: auto;
+            }
+        }
+
+        .search-bar {
+            input {
+                width: 350px;
+                height: 38px;
+                border-radius: 2rem;
+                border: 1px solid #202224;
+                background-color: #f5f6fa;
+            }
+        }
+    }
+
+    .right-side {
+        height: 100%;
+        width: 26%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        font-size: 35px;
+        color: #000000;
+    }
+}
+
+.content-title {
+    margin: 3rem 5rem 2rem 5rem;
+}
+
+.users-table {
+    width: 92%;
+    margin: 1rem auto;
+    border: 1px solid #202224;
+    border-collapse: collapse;
+    font-size: 20px;
+
+    /* Style for the table header */
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Alternate row colors for better readability */
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Style for table cells */
+    td,
+    th {
+        border: 1px solid #dddddd;
+        padding: 8px;
+    }
+
+    .td-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        color: white;
+        width: 100%;
+        height: 100%;
+
+        .edit-btn {
+            padding: 7px 15px;
+            background-color: aqua;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            padding: 7px 15px;
+            border-radius: 5px;
+            background-color: red;
+            border: none;
+        }
+    }
+}
+
+.register {
+    position: relative;
+    margin-top: 20px;
+    left: 87%;
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: yellow;
+    color: blue;
+    border: solid 0.5px black;
+}
+
+button {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.register-form-container,
+.update-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    .register-form,
+    .update-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            width: 300px;
+            height: 35px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+    }
+}
+
+.btn-group {
+    button {
+        font-size: 16px;
+        padding: 5px 20px;
+        margin: 0 15px;
+    }
+}
+
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: 15% 83%;
+
+    .navbar_left {
+        width: 100%;
+        background-color: #3749a6;
+        height: fit-content;
+        margin: 0 auto;
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+
+        ul {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                &:hover {
+                    border: solid 1px green;
+                }
+            }
+        }
+
+        .divide-line {
+            height: 0.5px;
+            width: 100%;
+            background-color: white;
+        }
+
+        h3 {
+            margin: 10px 0 0 20px;
+        }
+    }
+    .dashboard-content {
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        // align-items: center; // Đảm bảo căn giữa theo chiều dọc
+
+        .dashboard {
+            .card-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 40px;
+                .card {
+                    width: 262px;
+                    height: 180px;
+                    border-radius: 20px;
+                    background-color: white;
+                    position: relative;
+
+                    .category {
+                        font-size: 25px;
+                        color: #202224;
+                        margin: 5px 15px;
+                    }
+
+                    .number {
+                        font-size: 40px;
+                        margin: 15px 15px;
+                    }
+
+                    .comparision {
+                        font-size: 22px;
+                        position: relative;
+                        bottom: -4%;
+                        left: 8%;
+                    }
+
+                    img {
+                        position: inherit;
+                        top: -85%;
+                        right: -70%;
+                    }
+                }
+            }
+        }
+        .chart-container {
+            flex: 1; // Chiếm hết không gian còn lại
+            margin-left: 20px; // Khoảng cách giữa biểu đồ và phần 'member'
+            margin: 5rem auto;
+            // height: auto;
+            width: 90%;
+            // height: max-content;
+        }
+    }
+}

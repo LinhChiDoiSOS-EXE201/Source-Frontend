@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { publicRoutes } from '~/routes';
+import { privateRoutes, publicRoutes } from '~/routes';
 import DefaultLayout from '~/layouts';
 import { Fragment } from 'react';
 function App() {
@@ -26,6 +26,10 @@ function App() {
                                 }
                             />
                         );
+                    })}
+                    {privateRoutes.map((route, index) => {
+                        const Page = route.component;
+                        return <Route key={index} path={route.path} element={<Page />} />;
                     })}
                 </Routes>
             </div>

@@ -41,3 +41,12 @@ export const GETCUSTOMERBYEMAIL = '/api/v1/customers/email';
 
 //Get Course Detail
 export const GETCOURSEDETAIL = '/api/v1/course-detail';
+
+//Customer
+export const CRUDCUSTOMER = '/api/v1/customers';
+export const REGISTERCUSTOMER = '/api/v1/customers/register';
+
+//user waiting for premium
+export const USERWAITFORPREMIUM = '/api/v1/admin-booking/users-are-waitng-for-premium';
+//add booking
+export const ADDBOOKING = '/api/v1/admin-booking/add';
