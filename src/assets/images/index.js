@@ -86,7 +86,94 @@ const images = {
     haduonghuyet_main_step_1: require('~/assets/images/haduonghuyet/haduonghuyet_main_step_1.svg').default,
     haduonghuyet_main_step_2: require('~/assets/images/haduonghuyet/haduonghuyet_main_step_2.svg').default,
     haduonghuyet_main_step_3: require('~/assets/images/haduonghuyet/haduonghuyet_main_step_3.svg').default,
-    //
+    //Con trung can
+    contrungcan_main_step_1: require('~/assets/images/dongvatcan/dongvat_main_step_1.svg').default,
+    contrungcan_main_step_2: require('~/assets/images/contrungcan/contrungcan_main_step_2.svg').default,
+    contrungcan_main_step_3: require('~/assets/images/contrungcan/contrungcan_main_step_3.svg').default,
+    //Giam dinh
+    giamdinh_main_step_1: require('~/assets/images/dongvatcan/dongvat_main_step_3.svg').default,
+    giamdinh_main_step_2: require('~/assets/images/dongvatcan/dongvat_main_step_1.svg').default,
+    giamdinh_main_step_3: require('~/assets/images/giamdinh/giamdinh_main_step_3.svg').default,
+    giamdinh_main_step_4: require('~/assets/images/giamdinh/giamdinh_main_step_4.svg').default,
+    giamdinh_main_step_5: require('~/assets/images/cogiat/cogiat_main_step_4.svg').default,
+    //Kim tim dam
+    kimtimdam_main_step_1: require('~/assets/images/kimtimdam/kimtimdam_main_step_1.svg').default,
+    kimtimdam_main_step_2: require('~/assets/images/dongvatcan/dongvat_main_step_1.svg').default,
+    kimtimdam_main_step_3: require('~/assets/images/giamdinh/giamdinh_main_step_3.svg').default,
+    kimtimdam_main_step_4: require('~/assets/images/giamdinh/giamdinh_main_step_4.svg').default,
+    kimtimdam_main_step_5: require('~/assets/images/dongvatcan/dongvat_main_step_3.svg').default,
+    //Bong gan
+    bonggan_main_step_1: require('~/assets/images/contrungcan/contrungcan_main_step_3.svg').default,
+    bonggan_main_step_2: require('~/assets/images/bonggan/bonggan_main_step_2.svg').default,
+    bonggan_main_step_3: require('~/assets/images/bonggan/bonggan_main_step_3.svg').default,
+    //Bong?
+    bong_main_step_1: require('~/assets/images/bonggan/bonggan_main_step_2.svg').default,
+    bong_main_step_2: require('~/assets/images/dongvatcan/dongvat_main_step_1.svg').default,
+    bong_main_step_3: require('~/assets/images/bonggan/bonggan_main_step_3.svg').default,
+    //Ton thuong mat
+    tonthuongmat_main_step_1: require('~/assets/images/contrungcan/contrungcan_main_step_3.svg').default,
+    tonthuongmat_main_step_2: require('~/assets/images/tonthuongmat/tonthuongmat_main_step_2.svg').default,
+    tonthuongmat_main_step_3: require('~/assets/images/bonggan/bonggan_main_step_3.svg').default,
+    tonthuongmat_main_step_4: require('~/assets/images/cogiat/cogiat_main_step_4.svg').default,
+    //Soc nhiet
+    socnhiet_main_step_1: require('~/assets/images/socnhiet/socnhiet_main_step_1.svg').default,
+    socnhiet_main_step_2: require('~/assets/images/socnhiet/socnhiet_main_step_2.svg').default,
+    socnhiet_main_step_3: require('~/assets/images/socnhiet/socnhiet_main_step_3.svg').default,
+    socnhiet_main_step_4: require('~/assets/images/socnhiet/socnhiet_main_step_4.svg').default,
+    socnhiet_main_step_5: require('~/assets/images/socnhiet/socnhiet_main_step_5.svg').default,
+    socnhiet_main_step_6: require('~/assets/images/socnhiet/socnhiet_main_step_6.svg').default,
+    //Ha than nhiet
+    hathannhiet_main_step_1: require('~/assets/images/hathannhiet/hathannhiet_main_step_1.svg').default,
+    hathannhiet_main_step_2: require('~/assets/images/socnhiet/socnhiet_main_step_1.svg').default,
+    hathannhiet_main_step_3: require('~/assets/images/hathannhiet/hathannhiet_main_step_3.svg').default,
+    //Sot cao
+    sotcao_main_step_1: require('~/assets/images/sotcao/sotcao_main_step_1.svg').default,
+    sotcao_main_step_2: require('~/assets/images/sotcao/sotcao_main_step_2.svg').default,
+    sotcao_main_step_3: require('~/assets/images/sotcao/sotcao_main_step_3.svg').default,
+    sotcao_main_step_4: require('~/assets/images/sotcao/sotcao_main_step_4.svg').default,
+    //Chay mau cam
+    chaymaucam_main_step_1: require('~/assets/images/chaymaucam/chaymaucam_main_step_1.svg').default,
+    chaymaucam_main_step_2: require('~/assets/images/chaymaucam/chaymaucam_main_step_2.svg').default,
+    chaymaucam_main_step_3: require('~/assets/images/chaymaucam/chaymaucam_main_step_3.svg').default,
+    chaymaucam_main_step_4: require('~/assets/images/chaymaucam/chaymaucam_main_step_4.svg').default,
+    //Ngat
+    ngat_main_step_1: require('~/assets/images/ngat/ngat_main_step_1.svg').default,
+    ngat_main_step_2: require('~/assets/images/ngat/ngat_main_step_2.svg').default,
+    ngat_main_step_3: require('~/assets/images/ngat/ngat_main_step_3.svg').default,
+    ngat_main_step_4: require('~/assets/images/ngat/ngat_main_step_4.svg').default,
+    ngat_main_step_5: require('~/assets/images/ngat/ngat_main_step_5.svg').default,
+    //Ngo doc
+    ngodoc_main_step_1: require('~/assets/images/ngodoc/ngodoc_main_step_1.svg').default,
+    ngodoc_main_step_2: require('~/assets/images/ngodoc/ngodoc_main_step_2.svg').default,
+    ngodoc_main_step_3: require('~/assets/images/ngodoc/ngodoc_main_step_3.svg').default,
+    ngodoc_main_step_4: require('~/assets/images/ngodoc/ngodoc_main_step_4.svg').default,
+    ngodoc_main_step_5: require('~/assets/images/ngodoc/ngodoc_main_step_5.svg').default,
+    //That nut
+    thatnutdaythuyendai_main_step_1: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_1.svg')
+        .default,
+    thatnutdaythuyendai_main_step_2: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_2.svg')
+        .default,
+    thatnutdaythuyendai_main_step_3: require('~/assets/images/thatnutdaythuyendai/thatnutdaythuyendai_main_step_3.svg')
+        .default,
+    //SOS
+    sos_main_step_1: require('~/assets/images/sos/sos_main_step_1.svg').default,
+    sos_main_step_2: require('~/assets/images/sos/sos_main_step_2.svg').default,
+    //Tao lua
+    taolua_main_step_1: require('~/assets/images/taolua/taolua_main_step_1.svg').default,
+    taolua_main_step_2: require('~/assets/images/taolua/taolua_main_step_2.svg').default,
+    //Xac dinh phuong huong
+    xacdinhphuonghuong_main_step_1: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_1.svg')
+        .default,
+    xacdinhphuonghuong_main_step_2: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_2.svg')
+        .default,
+    xacdinhphuonghuong_main_step_3: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_3.svg')
+        .default,
+    xacdinhphuonghuong_main_step_4: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_4.svg')
+        .default,
+    xacdinhphuonghuong_main_step_5: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_5.svg')
+        .default,
+    xacdinhphuonghuong_main_step_6: require('~/assets/images/xacdinhphuonghuong/xacdinhphuonghuong_main_step_6.svg')
+        .default,
     socphanve_step_1_mini_content_1: require('~/assets/images/socpv/socphanve_step_1_mini_content_1.svg').default,
     socphanve_step_1_mini_content_2: require('~/assets/images/socpv/socphanve_step_1_mini_content_2.svg').default,
     socphanve_step_1_mini_content_3: require('~/assets/images/socpv/socphanve_step_1_mini_content_3.svg').default,
