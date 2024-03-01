@@ -78,13 +78,17 @@ export default function AdminDashboard() {
             const userArray = response.data.map((item) => item.applicationUserData);
             setUsers(userArray);
         };
+
+        getAllUsers();
+    }, [users]);
+
+    useEffect(() => {
         const getAllUsersWaitingForPremium = async () => {
             const response = await axiosPublic.get(USERWAITFORPREMIUM);
             setUserWaitForPremium(response.data);
         };
-        getAllUsers();
         getAllUsersWaitingForPremium();
-    }, [users, userWairForPremiun]);
+    }, [userWairForPremiun]);
 
     const handleDelete = async (id) => {
         const result = await axiosPublic.delete(CRUDCUSTOMER, {
