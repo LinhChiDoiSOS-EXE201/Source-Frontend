@@ -40,7 +40,7 @@ function Header() {
         <div className={cx('header')}>
             <div className={cx('overlap-group')}>
                 <div className={cx('rectangle')}>
-                    <Link to={config.routes.home} className={cx('logo-SOS')}>
+                    <Link to={config.routes.khancap} className={cx('logo-SOS')}>
                         <img className={cx('icon-button')} src={images.logo} alt="SOS" />
                     </Link>
                     <Link

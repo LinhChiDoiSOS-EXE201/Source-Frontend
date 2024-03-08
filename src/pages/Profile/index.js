@@ -18,12 +18,12 @@ function Profile() {
     const [customer, setCustomer] = useState({});
     // const [isPaid, setIsPaid] = useState(false);
     //Test
-    const [isPaid, setIsPaid] = useState(true);
+    const [isPaid, setIsPaid] = useState('false');
     //Test
     const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     const decode = jwtDecode(loginInfo.accessToken);
     const navigate = useNavigate();
-
+    console.log(decode);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleButtonClick = () => {
@@ -45,11 +45,12 @@ function Profile() {
             if (loginInfo !== null) {
                 const param = { id: decode.Id };
                 const id = decode.Id;
+                const isPaidDecode = decode.isPaid;
                 try {
                     const response = await axiosPrivate.get(`${USERDETAIL}/${id}`);
                     setUser(response.data.customerData);
                     setCustomer(response.data.applicationUserData);
-                    setIsPaid(response.data.customerData.isPaid);
+                    setIsPaid(isPaidDecode);
                 } catch (e) {
                     console.error(`Error at getUser:`);
                 }
@@ -134,7 +135,7 @@ function Profile() {
                     </div>
                     {/* {isPaid ? (
                         Test */}
-                    {!isPaid ? (
+                    {isPaid === 'false' ? (
                         <div className="learningCourse">
                             <div className="container-updatepremium">
                                 <button className="updatePremium" onClick={handleButtonClick}>
@@ -152,33 +153,33 @@ function Profile() {
                             </div>
                         </div>
                     ) : (
-                        <div className="learningCourse">
-                            <div className="container-updatepremium">
-                                <button className="updatePremium" onClick={handleButtonClick}>
-                                    <div>
-                                        <img alt="premium" src={images.premium} />
-                                        <p>Nâng cấp Premium</p>
-                                    </div>
-                                </button>
-                                {isLoading && <div className="loading">Loading...</div>}
-                                <img
-                                    className="logowithContentInside"
-                                    alt="logowithContentInside"
-                                    src={images.logowithContentInside}
-                                />
-                            </div>
-                        </div>
                         // <div className="learningCourse">
-                        //     <p className="title">Khóa học đang theo học</p>
-                        //     <div className="courses">
-                        //         <div className="course">
-                        //             <img src={avtTemp1} alt="" />
-                        //         </div>
-                        //         <div className="course">
-                        //             <img src={avtTemp2} alt="" />
-                        //         </div>
+                        //     <div className="container-updatepremium">
+                        //         <button className="updatePremium" onClick={handleButtonClick}>
+                        //             <div>
+                        //                 <img alt="premium" src={images.premium} />
+                        //                 <p>Nâng cấp Premium</p>
+                        //             </div>
+                        //         </button>
+                        //         {isLoading && <div className="loading">Loading...</div>}
+                        //         <img
+                        //             className="logowithContentInside"
+                        //             alt="logowithContentInside"
+                        //             src={images.logowithContentInside}
+                        //         />
                         //     </div>
                         // </div>
+                        <div className="learningCourse">
+                            <p className="title">Khóa học đang theo học</p>
+                            <div className="courses">
+                                <div className="course">
+                                    <img src={avtTemp1} alt="" />
+                                </div>
+                                <div className="course">
+                                    <img src={avtTemp2} alt="" />
+                                </div>
+                            </div>
+                        </div>
                     )}
                 </div>
                 <div className="rightSide">

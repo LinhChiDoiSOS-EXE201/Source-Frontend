@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 import Select, { components } from 'react-select';
 import { axiosPublic } from '~/api/axiosInstance';
 import { GETALLCATEGORY, TRACUU } from '~/utils/apiContrants';
+import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 function ChuanDoan() {
@@ -14,11 +17,20 @@ function ChuanDoan() {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [forceUpdateFlag, setForceUpdateFlag] = useState(false);
     const [isSearched, setIsSearched] = useState(false);
+    const navigate = useNavigate();
+
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
 
     const { IndicatorSeparator, DropdownIndicator, ClearIndicator, MultiValueRemove, ...otherComponents } = components;
 
     useEffect(() => {
         const fetchData = async () => {
+            const isPaid = decode.isPaid;
+            console.log(isPaid);
+            if (isPaid === 'false') {
+                navigate(config.routes.profile);
+            }
             const response = await axiosPublic.get(GETALLCATEGORY);
             setAllCategorys(response.data);
 
