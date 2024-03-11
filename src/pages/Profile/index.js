@@ -63,10 +63,10 @@ function Profile() {
         getUser();
     }, [loginInfo, decode.Id, navigate]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('loginInfo');
-        navigate(config.routes.login);
-    };
+    // const handleLogout = () => {
+    //     localStorage.removeItem('loginInfo');
+    //     navigate(config.routes.login);
+    // };
 
     return (
         <div className="container">
@@ -89,10 +89,10 @@ function Profile() {
                         <img src={setting} alt="" />
                         <p>Cài đặt tài khoản</p>
                     </div>
-                    <div className="btn-logout" onClick={handleLogout}>
+                    {/*<div className="btn-logout" onClick={handleLogout}>
                         <img src={images.logout} alt="Logout" />
                         <p>Đăng xuất</p>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
             <div className="overviewBlock">
