@@ -69,7 +69,7 @@ function Profile() {
             <div className="infoBlock">
                 <div className="leftSide">
                     <div className="blockAvt">
-                        <img src={customer.image} alt="" />
+                        <img src={images.user} alt="" />
                     </div>
                     <div className="blockName">
                         <p className="name">{customer.userName}</p>

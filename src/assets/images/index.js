@@ -1,5 +1,6 @@
 const images = {
     logo: require('~/assets/images/logo.svg').default,
+    logout: require('~/assets/images/logout.svg').default,
     user: require('~/assets/images/user.svg').default,
     search: require('~/assets/images/search.svg').default,
     logoWhiteSOS: require('~/assets/images/logoWhite.svg').default,

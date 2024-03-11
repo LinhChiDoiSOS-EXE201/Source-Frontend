@@ -2,14 +2,38 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import classNames from 'classnames/bind';
 import styles from './KhanCap.module.scss';
+import config from '~/config';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 const cx = classNames.bind(styles);
 
 function Category() {
     const [data, setData] = useState(null);
+    const navigate = useNavigate();
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
+    const handleClick = async (modelId, emergencyCategoryName) => {
+        if (decode === null || decode === undefined) {
+            // console.log('decode: ' + decode.isPaid);
+            //console.log('true or false  ' + (emergencyCategoryName == 'Khẩn cấp'));
+            if (emergencyCategoryName == 'Ưu tiên' || emergencyCategoryName == 'Khẩn cấp') {
+                window.location.href = `/khancapdetail?emergencyId=${modelId}`;
+            } else {
+                navigate(config.routes.home);
+            }
+            //navigate(config.routes.home);
+        } else if (decode.isPaid === 'false') {
+            console.log('decode: ' + decode.isPaid);
 
-    const handleClick = async (modelId) => {
-        window.location.href = `/khancapdetail?emergencyId=${modelId}`;
+            if (emergencyCategoryName !== 'Ưu tiên' || emergencyCategoryName !== 'Khẩn cấp') {
+                navigate(config.routes.profile);
+            } else {
+                window.location.href = `/khancapdetail?emergencyId=${modelId}`;
+            }
+        } else {
+            window.location.href = `/khancapdetail?emergencyId=${modelId}`;
+        }
     };
 
     useEffect(() => {
@@ -45,7 +69,7 @@ function Category() {
                                             return (
                                                 <button
                                                     key={model.emergencyId}
-                                                    onClick={() => handleClick(model.emergencyId)}
+                                                    onClick={() => handleClick(model.emergencyId, item.name)}
                                                     className={cx('content-box')}
                                                 >
                                                     <div className={cx('group')}>

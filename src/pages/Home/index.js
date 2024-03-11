@@ -3,7 +3,12 @@ import banner from '~/assets/images/logo.svg';
 import './Home.scss';
 import { Link } from 'react-router-dom';
 import config from '~/config';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+
 function Home() {
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
     return (
         <div className="container">
             <div className="boxContent">
@@ -46,12 +51,16 @@ function Home() {
                         </div>
                     </div>
                     <div className="buttonGroup">
-                        <Link to={config.routes.register} className="btn">
-                            Đăng ký miễn phí
-                        </Link>
-                        <Link to={config.routes.login} className="btn blue">
-                            Đăng nhập
-                        </Link>
+                        {decode === null || decode === undefined ? (
+                            <>
+                                <Link to={config.routes.register} className="btn">
+                                    Đăng ký miễn phí
+                                </Link>
+                                <Link to={config.routes.login} className="btn blue">
+                                    Đăng nhập
+                                </Link>
+                            </>
+                        ) : null}
                     </div>
                 </div>
                 <div className="rightSide">
