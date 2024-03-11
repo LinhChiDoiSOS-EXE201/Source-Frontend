@@ -20,6 +20,7 @@ const images = {
     loiichkhinangcap: require('~/assets/images/loiichkhinangcap.svg').default,
     loiich: require('~/assets/images/4loiich.svg').default,
     logout: require('~/assets/images/logout_icon.svg').default,
+    tableTemp: require('~/assets/images/tableTemp.svg').default,
 
     // dienthoai: require('~/assets/images/dienthoaiicon.svg').default,
     nexticon: require('~/assets/images/next-icon.svg').default,
