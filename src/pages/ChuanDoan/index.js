@@ -132,7 +132,7 @@ function ChuanDoan() {
                                 <div className={cx('result-card')} key={chuanDoan.id}>
                                     <div className={cx('card-img')}>
                                         <p className={cx('chuan-doan-name')}>{chuanDoan.name}</p>
-                                        <img />
+                                        <img src={chuanDoan.urlImage} alt={chuanDoan.name} />
                                     </div>
                                     <div className={cx('card-content')}>
                                         <p className={cx('discription')}>{chuanDoan.description}</p>

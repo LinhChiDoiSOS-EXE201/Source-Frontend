@@ -201,14 +201,16 @@
             .card-img {
                 width: 125px;
                 height: 125px;
-                // background-color: #fff;
-                background: url(../../assets/images/chuanDoanImg.png);
+                background-color: #fff;
+                //background: url(../../assets/images/chuanDoanImg.png);
                 background-size: cover;
                 border-radius: 22px;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
                 align-items: center;
+
+                position: relative;
 
                 .chuan-doan-name {
                     color: red;
@@ -217,6 +219,18 @@
                     font-weight: 800;
                     line-height: 1;
                     margin-bottom: 5px;
+
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 90%;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 22px;
                 }
             }
 
