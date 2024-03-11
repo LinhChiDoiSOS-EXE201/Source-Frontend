@@ -76,11 +76,11 @@ function Profile() {
                     </div>
                 </div>
                 <div className="rightSide">
-                    <div>
+                    <div className="notification">
                         <img src={noti} alt="" />
                         <p>Nhắc nhở</p>
                     </div>
-                    <div>
+                    <div className="settings">
                         <img src={setting} alt="" />
                         <p>Cài đặt tài khoản</p>
                     </div>

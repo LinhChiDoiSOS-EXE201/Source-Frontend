@@ -5,6 +5,7 @@
     border-radius: 40px;
     background: #0eb5c8;
     padding: 30px 43px;
+
     > .leftSide,
     > .rightSide {
         display: flex;
@@ -12,14 +13,31 @@
         padding: 0 72px;
         align-items: center;
 
+        .notification,
+        .settings {
+            display: flex;
+            gap: 10px;
+            color: #fff;
+            font-family: 'Darker Grotesque';
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+
+            cursor: pointer;
+            &:hover {
+                filter: brightness(0.8);
+            }
+        }
+
         .btn-logout {
             &:last-child {
                 cursor: pointer;
-                &:hover {
-                    filter: brightness(0.8);
-                }
                 img {
                     filter: brightness(0) invert(1);
+                }
+                &:hover {
+                    filter: brightness(0.8);
                 }
             }
         }
