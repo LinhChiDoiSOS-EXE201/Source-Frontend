@@ -2,6 +2,10 @@ import noti from '~/assets/images/noti.svg';
 import setting from '~/assets/images/setting.svg';
 import './Profile.scss';
 import { useEffect, useState } from 'react';
+
+import avtTemp1 from '~/assets/images/avtTemp1.svg';
+import avtTemp2 from '~/assets/images/avtTemp2.svg';
+
 import { axiosPrivate } from '~/api/axiosInstance';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -69,7 +73,7 @@ function Profile() {
             <div className="infoBlock">
                 <div className="leftSide">
                     <div className="blockAvt">
-                        <img src={customer.image} alt="" />
+                        <img src={images.user} alt="" />
                     </div>
                     <div className="blockName">
                         <p className="name">{customer.userName}</p>
@@ -141,7 +145,7 @@ function Profile() {
                     </div>
                     {/* {isPaid ? (
                         Test */}
-                    {isPaid === 'false' ? (
+                    {isPaid == 'false' ? (
                         <div className="learningCourse">
                             <div className="container-updatepremium">
                                 <button className="updatePremium" onClick={handleButtonClick}>
@@ -159,22 +163,6 @@ function Profile() {
                             </div>
                         </div>
                     ) : (
-                        // <div className="learningCourse">
-                        //     <div className="container-updatepremium">
-                        //         <button className="updatePremium" onClick={handleButtonClick}>
-                        //             <div>
-                        //                 <img alt="premium" src={images.premium} />
-                        //                 <p>Nâng cấp Premium</p>
-                        //             </div>
-                        //         </button>
-                        //         {isLoading && <div className="loading">Loading...</div>}
-                        //         <img
-                        //             className="logowithContentInside"
-                        //             alt="logowithContentInside"
-                        //             src={images.logowithContentInside}
-                        //         />
-                        //     </div>
-                        // </div>
                         <div className="learningCourse">
                             <p className="title">Khóa học đang theo học</p>
                             <div className="courses">
@@ -189,9 +177,7 @@ function Profile() {
                     )}
                 </div>
                 <div className="rightSide">
-                    {/* {isPaid ? (
-                        Test */}
-                    {!isPaid ? (
+                    {isPaid != 'true' ? (
                         <div className="container-right-updatepremium">
                             <p className="only10K">
                                 Chỉ với 10k/tháng, bạn đã có thể mở tài khoản Premium và khám phá tất cả tính năng của
@@ -201,7 +187,7 @@ function Profile() {
                             <img alt="premium" src={images.loiich} />
                         </div>
                     ) : (
-                        // <img src={tableTemp} alt="" />
+                        // <img src={images.tableTemp} alt="Table" />
                         <div className="container-right-updatepremium">
                             <p className="only10K">
                                 Chỉ với 10k/tháng, bạn đã có thể mở tài khoản Premium và khám phá tất cả tính năng của

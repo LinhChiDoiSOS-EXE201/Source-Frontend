@@ -1,12 +1,34 @@
 import classNames from 'classnames/bind';
 import styles from './Footer.module.scss';
 import images from '~/assets/images';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import config from '~/config';
-
+import jwtDecode from 'jwt-decode';
 const cx = classNames.bind(styles);
 
 function Footer() {
+    const history = useNavigate();
+
+    let checkLogin = null;
+    console.log(checkLogin);
+
+    const storedLoginInfo = localStorage.getItem('loginInfo');
+
+    if (storedLoginInfo !== null || storedLoginInfo !== undefined) {
+        const loginInfo = JSON.parse(storedLoginInfo);
+        if (loginInfo !== null && loginInfo !== undefined) {
+            const user = jwtDecode(loginInfo.accessToken);
+            const isExpired = user.exp > Date.now() / 1000;
+
+            console.log(isExpired);
+            checkLogin = isExpired;
+            console.log(checkLogin);
+        }
+    } else {
+        checkLogin = false;
+        history(config.routes.login);
+    }
+
     return (
         <div className={cx('footer')}>
             <p className={cx('text-logo-fb-ins-p-m')}>Liên hệ với chúng tôi</p>
@@ -14,16 +36,16 @@ function Footer() {
             <Link to={config.routes.khancap}>
                 <div className={cx('text-khan-cap')}>Khẩn cấp</div>
             </Link>
-            <Link to={config.routes.chuandoan}>
+            <Link to={checkLogin === null || checkLogin === false ? config.routes.home : config.routes.chuandoan}>
                 <div className={cx('text-tra-cuu')}>Tra cứu</div>
             </Link>
-            <Link to={config.routes.kynang}>
+            <Link to={checkLogin === null || checkLogin === false ? config.routes.home : config.routes.kynang}>
                 <div className={cx('text-ky-nang')}>Học kỹ năng</div>
             </Link>
-            <Link to={config.routes.thuchanh}>
+            <Link to={checkLogin === null || checkLogin === false ? config.routes.home : config.routes.thuchanh}>
                 <div className={cx('text-thuc-hanh')}>Thực hành</div>
             </Link>
-            <Link to={config.routes.profile}>
+            <Link to={checkLogin === null || checkLogin === false ? config.routes.home : config.routes.profile}>
                 <div className={cx('text-ca-nhan')}>Cá nhân</div>
             </Link>
             <Link to={config.routes.khancap}>

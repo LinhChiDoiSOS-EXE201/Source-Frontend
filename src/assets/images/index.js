@@ -1,5 +1,6 @@
 const images = {
     logo: require('~/assets/images/logo.svg').default,
+    logout: require('~/assets/images/logout.svg').default,
     user: require('~/assets/images/user.svg').default,
     search: require('~/assets/images/search.svg').default,
     logoWhiteSOS: require('~/assets/images/logoWhite.svg').default,
@@ -19,6 +20,7 @@ const images = {
     loiichkhinangcap: require('~/assets/images/loiichkhinangcap.svg').default,
     loiich: require('~/assets/images/4loiich.svg').default,
     logout: require('~/assets/images/logout_icon.svg').default,
+    tableTemp: require('~/assets/images/tableTemp.svg').default,
 
     // dienthoai: require('~/assets/images/dienthoaiicon.svg').default,
     nexticon: require('~/assets/images/next-icon.svg').default,
