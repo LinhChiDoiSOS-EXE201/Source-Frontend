@@ -1,10 +1,7 @@
 import noti from '~/assets/images/noti.svg';
 import setting from '~/assets/images/setting.svg';
-import avtTemp1 from '~/assets/images/avtTemp1.svg';
-import avtTemp2 from '~/assets/images/avtTemp2.svg';
-import tableTemp from '~/assets/images/tableTemp.svg';
 import './Profile.scss';
-import { useEffect, useState, useHistory } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosPrivate } from '~/api/axiosInstance';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -61,6 +58,11 @@ function Profile() {
         getUser();
     }, [loginInfo, decode.Id, navigate]);
 
+    const handleLogout = () => {
+        localStorage.removeItem('loginInfo');
+        navigate(config.routes.login);
+    };
+
     return (
         <div className="container">
             <div className="infoBlock">
@@ -81,6 +83,10 @@ function Profile() {
                     <div>
                         <img src={setting} alt="" />
                         <p>Cài đặt tài khoản</p>
+                    </div>
+                    <div className="btn-logout" onClick={handleLogout}>
+                        <img src={images.logout} alt="Logout" />
+                        <p>Đăng xuất</p>
                     </div>
                 </div>
             </div>
