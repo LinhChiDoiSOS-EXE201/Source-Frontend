@@ -7,6 +7,51 @@
     font-family: 'Darker Grotesque', sans-serif;
     margin: 15% auto 6% auto;
 
+    .options {
+        .huy-btn {
+            margin-right: 27px;
+            border-radius: 10px;
+            background-color: #025b67;
+            color: #ffffff;
+            height: 40px;
+            width: 81px;
+            border: none;
+
+            &:hover {
+                background: #025b67;
+                width: 85px;
+                height: 42px;
+                //font-size: 21px;
+                //font-weight: 600;
+                transform: translate(-5px, -5px);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .confirm-btn {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #f23929;
+            color: #ffffff;
+            height: 40px;
+            width: 142px;
+            border: none;
+
+            &:hover {
+                background: #f23929;
+                width: 145px;
+                height: 42px;
+                //font-size: 21px;
+                //font-weight: 600;
+                transform: translate(-5px, -5px);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
     .detail-img {
         height: 100%;
         width: 100%;
