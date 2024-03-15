@@ -50,3 +50,6 @@ export const REGISTERCUSTOMER = '/api/v1/customers/register';
 export const USERWAITFORPREMIUM = '/api/v1/admin-booking/users-are-waitng-for-premium';
 //add booking
 export const ADDBOOKING = '/api/v1/admin-booking/add';
+
+// send-mail-by-doctor
+export const SENDMAILDOCTOR = '/api/v1/send-mail-by-doctor';
