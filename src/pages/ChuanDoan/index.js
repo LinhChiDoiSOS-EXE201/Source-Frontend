@@ -31,7 +31,7 @@ function ChuanDoan() {
                 const isPaidPremium = decode.isPaid;
                 console.log('Paid: ' + isPaidPremium);
                 if (decode === null || isPaidPremium == 'false') {
-                    navigate(`/home`);
+                    navigate(`/`);
                 }
                 console.log(isPaidPremium);
             }

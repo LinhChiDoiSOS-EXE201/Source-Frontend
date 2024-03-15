@@ -29,7 +29,7 @@ function KyNang() {
                 const isPaidDecode = decode.isPaid;
                 console.log(isPaidDecode);
                 if (isPaidDecode == 'false') {
-                    navigate(`/home`);
+                    navigate(`/`);
                 }
                 try {
                     const response = await axiosPublic.get(`${GETALLCOURSE}`);
