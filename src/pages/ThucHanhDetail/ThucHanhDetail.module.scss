@@ -50,6 +50,46 @@
                 transition: all 0.3s ease-in-out;
             }
         }
+
+        .connect-btn {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #025b67;
+            color: #ffffff;
+            //font-size: 20px;
+            font-weight: 600;
+            height: 50px;
+            width: 304px;
+            border: none;
+
+            &:hover {
+                background: #025b67;
+                width: 310px;
+                height: 52px;
+                //font-size: 21px;
+                //font-weight: 600;
+                transform: translate(-5px, -5px);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            margin-right: 27px;
+            border-radius: 10px;
+            background-color: #f1f4f5;
+            color: #000;
+            height: 50px;
+            width: 300px;
+            border: none;
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding-left: 0px;
+        }
     }
 
     .detail-img {
