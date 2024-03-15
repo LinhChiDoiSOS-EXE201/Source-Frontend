@@ -3,6 +3,7 @@ import styles from './ThucHanh.module.scss';
 import bacSi from '../../assets/images/bacSi.png';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 const cx = classNames.bind(styles);
 
@@ -66,6 +67,9 @@ const cardData = [
 ];
 
 function ThucHanh() {
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
+
     const nav = useNavigate();
 
     const handleReadMore = (e) => {
@@ -74,7 +78,19 @@ function ThucHanh() {
         nav(`/thuchanh/${id}`);
     };
 
-    useEffect(() => {});
+    useEffect(() => {
+        if (loginInfo !== null) {
+            const id = decode.Id;
+            console.log(id);
+            const isPaidDecode = decode.isPaid;
+            console.log(isPaidDecode);
+            if (isPaidDecode == 'false') {
+                nav(`/`);
+            }
+        } else {
+            nav('/login');
+        }
+    });
 
     return (
         <div className={cx('thucHanh')}>
