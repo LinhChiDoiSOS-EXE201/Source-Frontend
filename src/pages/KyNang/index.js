@@ -26,6 +26,11 @@ function KyNang() {
             if (loginInfo !== null) {
                 const id = decode.Id;
                 console.log(id);
+                const isPaidDecode = decode.isPaid;
+                console.log(isPaidDecode);
+                if (isPaidDecode == 'false') {
+                    navigate(`/home`);
+                }
                 try {
                     const response = await axiosPublic.get(`${GETALLCOURSE}`);
                     if (response.status === 200) {

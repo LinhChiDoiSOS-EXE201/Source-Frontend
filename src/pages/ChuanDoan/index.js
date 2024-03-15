@@ -26,11 +26,19 @@ function ChuanDoan() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const isPaid = decode.isPaid;
-            console.log(isPaid);
-            if (isPaid === 'false') {
-                navigate(config.routes.profile);
+            console.log(decode);
+            if (decode !== null) {
+                const isPaidPremium = decode.isPaid;
+                console.log('Paid: ' + isPaidPremium);
+                if (decode === null || isPaidPremium == 'false') {
+                    navigate(`/home`);
+                }
+                console.log(isPaidPremium);
             }
+
+            // if (isPaidPremium === 'false') {
+            //     navigate(config.routes.profile);
+            // }
             const response = await axiosPublic.get(GETALLCATEGORY);
             setAllCategorys(response.data);
 

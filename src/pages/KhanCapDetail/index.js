@@ -21,7 +21,7 @@ function KhanCapDetail() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `https://linhchidoi.azurewebsites.net/api/v1/emergencycategorys/${emergencyId}`,
+                    `https://api-6969.ministore.tech/api/v1/emergencycategorys/${emergencyId}`,
                 );
                 setData(response.data);
             } catch (error) {
