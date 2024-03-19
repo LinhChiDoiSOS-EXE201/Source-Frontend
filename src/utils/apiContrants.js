@@ -53,3 +53,6 @@ export const ADDBOOKING = '/api/v1/admin-booking/add';
 
 // send-mail-by-doctor
 export const SENDMAILDOCTOR = '/api/v1/send-mail-by-doctor';
+
+//total booked
+export const TOTALBOOKED = '/api/v1/admin-booking/users-are-booked-by-time';

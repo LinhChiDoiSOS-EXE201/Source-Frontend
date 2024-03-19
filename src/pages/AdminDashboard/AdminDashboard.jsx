@@ -6,10 +6,11 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 import { MdSupervisorAccount } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import { axiosPublic } from '~/api/axiosInstance';
-import { ADDBOOKING, CRUDCUSTOMER, REGISTERCUSTOMER, USERWAITFORPREMIUM } from '~/utils/apiContrants';
+import { ADDBOOKING, CRUDCUSTOMER, REGISTERCUSTOMER, TOTALBOOKED, USERWAITFORPREMIUM } from '~/utils/apiContrants';
 import user from '../../assets/images/admin/user.png';
-import { Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
+import { formatCurrency, generateApiUrlForMonth, getCurrentDate } from '~/utils/convert';
 
 const labels = [
     'January',
@@ -26,34 +27,61 @@ const labels = [
     'December',
 ];
 
-const data = {
-    labels: labels,
-    datasets: [
-        {
-            label: 'Sales Detail',
-            data: [65, 59, 80, 81, 56, 55, 40, 66, 20, 40, 40, 90],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-        },
-    ],
-};
-
-const config = {
-    type: 'line',
-    data: data,
-};
-
 const cx = classNames.bind(styles);
 
 export default function AdminDashboard() {
     const [users, setUsers] = useState([]);
+    const [totalBooked, setTotalBooked] = useState([]);
     const [updateUserInfor, setUpdateUserInfor] = useState([]);
     const [userInfor, setUserInfor] = useState({});
     const [userWairForPremiun, setUserWaitForPremium] = useState([]);
+    const startTime = '2024-01-01';
+    const endTime = getCurrentDate();
+    const [lineData, setLineData] = useState([]);
+    const [totalUser, setTotalUser] = useState([]);
+    const [totalUserPremium, setTotalUserPremium] = useState([]);
 
     const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
+
+    const dataLine = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Sales Detail',
+                data: lineData,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+            },
+        ],
+    };
+
+    const dataBar = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'User Premium Detail',
+                data: totalUserPremium,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const options = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
+    const config = {
+        type: 'line',
+        data: dataLine,
+    };
 
     const handleRegisterButtonClick = () => {
         setShowRegisterForm(true);
@@ -73,6 +101,37 @@ export default function AdminDashboard() {
     };
 
     useEffect(() => {
+        const fetchDataForMonths = async () => {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1;
+            let newLineData = [];
+            // let newTotalUser = [];
+            let newTotalUserPremium = [];
+            for (let month = 1; month <= currentMonth; month++) {
+                const url = generateApiUrlForMonth(currentYear, month);
+                try {
+                    const response = await axiosPublic.get(url);
+                    response.data.totalPriceBooked === null
+                        ? newLineData.push(0)
+                        : newLineData.push(response.data.totalPriceBooked);
+                    // response.data.quantityAccountBooked === null
+                    //     ? newTotalUserPremium.push(0)
+                    //     : newTotalUserPremium.push(response.data.quantityAccountBooked);
+                    response.data.quantityAccountBooked === null
+                        ? newTotalUserPremium.push(0)
+                        : newTotalUserPremium.push(response.data.quantityAccountBooked);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+            setLineData(newLineData);
+            setTotalUserPremium(newTotalUserPremium);
+        };
+        fetchDataForMonths();
+    }, []);
+
+    useEffect(() => {
         const getAllUsers = async () => {
             const response = await axiosPublic.get(CRUDCUSTOMER);
             const userArray = response.data.map((item) => item.applicationUserData);
@@ -81,6 +140,16 @@ export default function AdminDashboard() {
 
         getAllUsers();
     }, [users]);
+
+    useEffect(() => {
+        const url = `${TOTALBOOKED}/${startTime}/${endTime}`;
+        const getAllBooked = async () => {
+            const response = await axiosPublic.get(url);
+            setTotalBooked(response.data);
+        };
+
+        getAllBooked();
+    }, [totalBooked]);
 
     useEffect(() => {
         const getAllUsersWaitingForPremium = async () => {
@@ -206,21 +275,21 @@ export default function AdminDashboard() {
                         <div className={cx('card-container')}>
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Total User</h3>
-                                <h2 className={cx('number')}>40,689</h2>
-                                <h3 className={cx('comparision')}>8.5% Up from yesterday</h3>
+                                <h2 className={cx('number')}>{users.length}</h2>
+                                <h3 className={cx('comparision')}>Using our application</h3>
                                 <img src={user} />
                             </div>
                             <div className={cx('card')}>
-                                <h3 className={cx('category')}>Total User</h3>
-                                <h2 className={cx('number')}>40,689</h2>
-                                <h3 className={cx('comparision')}>8.5% Up from yesterday</h3>
-                                <img src={user} />
+                                <h3 className={cx('category')}>Total Revenue</h3>
+                                <h2 className={cx('number')}>{formatCurrency(totalBooked.totalPriceBooked)}</h2>
+                                <h3 className={cx('comparision')}>In this year</h3>
+                                {/* <img src={user} /> */}
                             </div>
                             <div className={cx('card')}>
-                                <h3 className={cx('category')}>Total User</h3>
-                                <h2 className={cx('number')}>40,689</h2>
-                                <h3 className={cx('comparision')}>8.5% Up from yesterday</h3>
-                                <img src={user} />
+                                <h3 className={cx('category')}>Total User Premium</h3>
+                                <h2 className={cx('number')}>{totalBooked.quantityAccountBooked}</h2>
+                                <h3 className={cx('comparision')}>In this year</h3>
+                                {/* <img src={user} /> */}
                             </div>
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Total User</h3>
@@ -231,7 +300,15 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                     <div className={cx('chart-container')}>
-                        <Line data={data} options={config} />
+                        <Line data={dataLine} options={config} />
+                    </div>
+                    <div className={cx('chart-container')}>
+                        <div className={cx('chart')}>
+                            <Bar data={dataBar} options={options} />
+                        </div>
+                        <div className={cx('chart')}>
+                            <Bar data={dataBar} options={options} />
+                        </div>
                     </div>
 
                     <div className={cx('member')}>
