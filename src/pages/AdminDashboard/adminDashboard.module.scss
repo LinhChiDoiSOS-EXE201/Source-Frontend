@@ -180,11 +180,13 @@ button {
     .navbar_left {
         width: 100%;
         background-color: #3749a6;
-        height: fit-content;
+        height: 100vh;
         margin: 0 auto;
         color: white;
         font-size: 20px;
         font-weight: 500;
+        position: sticky;
+        top: 0rem;
 
         ul {
             margin-top: 30px;
@@ -233,7 +235,7 @@ button {
                     position: relative;
 
                     .category {
-                        font-size: 25px;
+                        font-size: 30px;
                         color: #202224;
                         margin: 5px 15px;
                     }
@@ -246,7 +248,7 @@ button {
                     .comparision {
                         font-size: 22px;
                         position: relative;
-                        bottom: -4%;
+                        bottom: 0%;
                         left: 8%;
                     }
 
@@ -259,12 +261,18 @@ button {
             }
         }
         .chart-container {
+            display: flex;
             flex: 1; // Chiếm hết không gian còn lại
-            margin-left: 20px; // Khoảng cách giữa biểu đồ và phần 'member'
+            // margin-left: 10px; // Khoảng cách giữa biểu đồ và phần 'member'
             margin: 5rem auto;
             // height: auto;
             width: 90%;
+            gap: 5rem;
             // height: max-content;
+            .chart {
+                position: relative;
+                width: 50%;
+            }
         }
     }
 }
