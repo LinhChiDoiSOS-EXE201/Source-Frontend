@@ -47,6 +47,7 @@ function Profile() {
                 const param = { id: decode.Id };
                 const id = decode.Id;
                 const isPaidDecode = decode.isPaid;
+
                 try {
                     const response = await axiosPrivate.get(`${USERDETAIL}/${id}`);
                     setUser(response.data.customerData);
