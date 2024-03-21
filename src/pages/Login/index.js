@@ -38,7 +38,7 @@ function Login() {
                     email: values.email,
                     password: values.password,
                 });
-
+                console.log(response.data.accessToken);
                 const user = jwtDecode(response.data.accessToken);
 
                 localStorage.setItem('loginInfo', JSON.stringify(response.data));
@@ -47,7 +47,7 @@ function Login() {
                 if (user.role === 'Customer') {
                     navigate(config.routes.profile);
                 } else if (user.role === 'Manager') {
-                    navigate(config.routes.profile);
+                    navigate(config.routes.admin);
                 }
             } catch (error) {
                 setText('Đăng nhập không thành công. Sai mật khẩu hoặc số điện thoại');

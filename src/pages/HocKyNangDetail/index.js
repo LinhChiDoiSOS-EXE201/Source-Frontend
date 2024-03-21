@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './HocKyNangDetail.module.scss';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import config from '~/config';
@@ -21,7 +21,9 @@ function KyNangDetail() {
     console.log(applicationUserId);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`https://api-6969.ministore.tech/${id}/${applicationUserId}`);
+            const response = await fetch(
+                `https://api-6969.ministore.tech/api/v1/course-detail/${id}/${applicationUserId}`,
+            );
             if (response.status !== 200) {
                 navigate(config.routes.profile);
             }

@@ -84,8 +84,9 @@ function ThucHanh() {
             console.log(id);
             const isPaidDecode = decode.isPaid;
             console.log(isPaidDecode);
-            if (isPaidDecode == 'false') {
+            if (isPaidDecode === 'false') {
                 nav(`/`);
+                return;
             }
         } else {
             nav('/login');
