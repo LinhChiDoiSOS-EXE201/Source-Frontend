@@ -11,6 +11,10 @@ import user from '../../assets/images/admin/user.png';
 import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import { formatCurrency, generateApiUrlForMonth, getCurrentDate } from '~/utils/convert';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import images from '~/assets/images';
+import config from '~/config';
+import jwtDecode from 'jwt-decode';
 
 const labels = [
     'January',
@@ -40,9 +44,29 @@ export default function AdminDashboard() {
     const [lineData, setLineData] = useState([]);
     const [totalUser, setTotalUser] = useState([]);
     const [totalUserPremium, setTotalUserPremium] = useState([]);
-
+    const location = useLocation();
+    const history = useNavigate();
     const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
+
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
+    const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
+
+    useEffect(() => {
+        if (decode === null || user.role === 'Manager') {
+            history(`/`);
+        }
+    }, []);
+
+    useEffect(() => {
+        const usersPerMonth = Array(12).fill(0);
+        users.forEach((entry) => {
+            const createdDate = new Date(entry.customerData.created);
+            const month = createdDate.getMonth(); // Lấy tháng từ ngày tạo
+            usersPerMonth[month]++;
+        });
+        setTotalUser(usersPerMonth);
+    }, [users]);
 
     const dataLine = {
         labels: labels,
@@ -57,12 +81,25 @@ export default function AdminDashboard() {
         ],
     };
 
-    const dataBar = {
+    const dataBarUserPremium = {
         labels: labels,
         datasets: [
             {
                 label: 'User Premium Detail',
                 data: totalUserPremium,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const dataBarUser = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'User Detail',
+                data: totalUser,
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgba(255, 99, 132, 0.2)',
                 borderWidth: 1,
@@ -78,7 +115,7 @@ export default function AdminDashboard() {
         },
     };
 
-    const config = {
+    const configBar = {
         type: 'line',
         data: dataLine,
     };
@@ -134,7 +171,7 @@ export default function AdminDashboard() {
     useEffect(() => {
         const getAllUsers = async () => {
             const response = await axiosPublic.get(CRUDCUSTOMER);
-            const userArray = response.data.map((item) => item.applicationUserData);
+            const userArray = response.data;
             setUsers(userArray);
         };
 
@@ -166,6 +203,12 @@ export default function AdminDashboard() {
         console.log(result);
         setUsers(['']);
         result.status === 200 ? alert('Delete sucessfully') : alert(`Error: ${result.status.message}`);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('loginInfo');
+        //setLoggedIn(false);
+        history(config.routes.login);
     };
 
     const handleUnlock = async (id) => {
@@ -234,9 +277,19 @@ export default function AdminDashboard() {
                     {/* <li className={cx('item')}>
                         <IoSettings />
                     </li> */}
-                    <li className={cx('item')}>
+                    {/* <li className={cx('item')}>
                         <FaUserCircle />
-                    </li>
+                    </li> */}
+                    <Link
+                        to={config.routes.profile}
+                        className={cx('ellipse-user', { active: location.pathname === config.routes.profile })}
+                    >
+                        <img className={cx('user-icon')} src={images.user} alt="User" />
+                    </Link>
+
+                    <Link onClick={handleLogout} to={config.routes.login} className={cx('ellipse-search')}>
+                        <img className={cx('search-icon')} src={images.logout} alt="Log out" />
+                    </Link>
                 </ul>
             </div>
             <div className={cx('admin-dashboard')}>
@@ -292,22 +345,24 @@ export default function AdminDashboard() {
                                 {/* <img src={user} /> */}
                             </div>
                             <div className={cx('card')}>
-                                <h3 className={cx('category')}>Total User</h3>
-                                <h2 className={cx('number')}>40,689</h2>
-                                <h3 className={cx('comparision')}>8.5% Up from yesterday</h3>
-                                <img src={user} />
+                                <h3 className={cx('category')}>Exchange Rate</h3>
+                                <h2 className={cx('number')}>
+                                    {(totalBooked.quantityAccountBooked / users.length) * 100} %
+                                </h2>
+                                <h3 className={cx('comparision')}>In this year</h3>
+                                {/* <img src={user} /> */}
                             </div>
                         </div>
                     </div>
                     <div className={cx('chart-container')}>
-                        <Line data={dataLine} options={config} />
+                        <Line data={dataLine} options={configBar} />
                     </div>
                     <div className={cx('chart-container')}>
                         <div className={cx('chart')}>
-                            <Bar data={dataBar} options={options} />
+                            <Bar data={dataBarUser} options={options} />
                         </div>
                         <div className={cx('chart')}>
-                            <Bar data={dataBar} options={options} />
+                            <Bar data={dataBarUserPremium} options={options} />
                         </div>
                     </div>
 
@@ -328,22 +383,25 @@ export default function AdminDashboard() {
                             </thead>
                             <tbody>
                                 {users.map((user, index) => (
-                                    <tr key={user.id}>
+                                    <tr key={user.applicationUserData.id}>
                                         <td>{index + 1}</td>
-                                        <td>{user.fullName}</td>
-                                        <td>{user.userName}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.phoneNumber || ''}</td>
-                                        <td>{user.address || ''}</td>
-                                        <td>{user.birthDay || ''}</td>
+                                        <td>{user.applicationUserData.fullName}</td>
+                                        <td>{user.applicationUserData.userName}</td>
+                                        <td>{user.applicationUserData.email}</td>
+                                        <td>{user.applicationUserData.phoneNumber || ''}</td>
+                                        <td>{user.applicationUserData.address || ''}</td>
+                                        <td>{user.applicationUserData.birthDay || ''}</td>
                                         <td className={cx('td-btn')}>
                                             <button
                                                 className={cx('edit-btn')}
-                                                onClick={() => handleEditButtonClick(user.id)}
+                                                onClick={() => handleEditButtonClick(user.applicationUserData.id)}
                                             >
                                                 Edit
                                             </button>
-                                            <button className={cx('delete-btn')} onClick={() => handleDelete(user.id)}>
+                                            <button
+                                                className={cx('delete-btn')}
+                                                onClick={() => handleDelete(user.applicationUserData.id)}
+                                            >
                                                 Delete
                                             </button>
                                         </td>
