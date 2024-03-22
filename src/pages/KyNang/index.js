@@ -23,15 +23,16 @@ function KyNang() {
 
     useEffect(() => {
         const getAllCategory = async () => {
-            if (loginInfo !== null) {
-                const id = decode.Id;
-                console.log(id);
-                const isPaidDecode = decode.isPaid;
+           
+                // if(decode.id == null) decode.Id = '1'
+                // const id = decode.Id;
+                // console.log(id);
+                // const isPaidDecode = decode.isPaid;
 
-                if (isPaidDecode === 'false') {
-                    navigate(`/`);
-                    return;
-                }
+                // if (isPaidDecode === 'false') {
+                //     navigate(`/`);
+                //     return;
+                // }
                 try {
                     const response = await axiosPublic.get(`${GETALLCOURSE}`);
                     if (response.status === 200) {
@@ -40,10 +41,7 @@ function KyNang() {
                 } catch (e) {
                     console.error('Error fetching data:', e);
                 }
-            } else {
-                toast.error('not allow');
-                navigate(config.routes.home);
-            }
+            
         };
 
         getAllCategory();

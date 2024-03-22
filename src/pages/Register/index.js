@@ -155,7 +155,7 @@ function Register() {
                                     name="email"
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
-                                    placeholder="Tài khoản đăng nhập (Email hoặc số điện thoại)"
+                                    placeholder="Email"
                                     error={formik.touched.email && Boolean(formik.errors.email)}
                                     helperText={formik.touched.email && formik.errors.email}
                                     autoComplete="off"

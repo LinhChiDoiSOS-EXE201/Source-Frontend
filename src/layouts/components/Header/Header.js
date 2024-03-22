@@ -78,7 +78,7 @@ function Header() {
                         Chẩn đoán
                     </Link>
                     <Link
-                        to={checkLogin === null || checkLogin === false ? config.routes.home : config.routes.kynang}
+                        to={config.routes.kynang}
                         className={cx('text-ky-nang', { active: location.pathname === config.routes.kynang })}
                     >
                         Học kỹ năng

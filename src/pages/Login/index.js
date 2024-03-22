@@ -170,7 +170,7 @@ function Login() {
                                     onChange={formik.handleChange}
                                     error={formik.touched.email && Boolean(formik.errors.email)}
                                     helperText={formik.touched.email && formik.errors.email}
-                                    placeholder="Email hoặc số điện thoại"
+                                    placeholder="Email"
                                     autoComplete="off"
                                     autoFocus
                                 />
