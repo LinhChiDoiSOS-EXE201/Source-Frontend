@@ -13,7 +13,9 @@ function Home() {
         <div className="container">
             <div className="boxContent">
                 <div className="lefSide">
-                    <p className="title">
+                {decode === null || decode === undefined ? (
+                            <>
+                                <p className="title">
                         <span className="bold">LỢI ÍCH KHI TẠO</span> TÀI KHOẢN SOS
                     </p>
                     <div className="listBox">
@@ -50,6 +52,50 @@ function Home() {
                             <p className="desc">Tự động cài đặt nhắc nhở học tập</p>
                         </div>
                     </div>
+                            </>
+                        ) : (
+                            <>
+                                <p className="title">
+                         NÂNG CẤP GÓI PREMIUM ĐỂ ĐƯỢC
+                    </p>
+                    <div className="listBox">
+                        <div className="item">
+                            <div className="icon">
+                                <img src={check} alt="" />
+                            </div>
+                            <p className="desc">Lưu lại quá trình học các kỹ năng sinh tồn</p>
+                        </div>
+                        <div className="item">
+                            <div className="icon">
+                                <img src={check} alt="" />
+                            </div>
+                            <p className="desc">
+                                Dễ dàng tra cứu lịch sử tìm kiếm chẩn đoán để theo dõi sức khỏe cá nhân
+                            </p>
+                        </div>
+                        <div className="item">
+                            <div className="icon">
+                                <img src={check} alt="" />
+                            </div>
+                            <p className="desc">Kết nối nhanh chóng với các chuyên gia và các khóa học nâng cao</p>
+                        </div>
+                        <div className="item">
+                            <div className="icon">
+                                <img src={check} alt="" />
+                            </div>
+                            <p className="desc">Cá nhân hóa không gian học tập</p>
+                        </div>
+                        <div className="item">
+                            <div className="icon">
+                                <img src={check} alt="" />
+                            </div>
+                            <p className="desc">Tự động cài đặt nhắc nhở học tập</p>
+                        </div>
+                    </div>
+                                
+                            </>
+                        )}
+                    
                     <div className="buttonGroup">
                         {decode === null || decode === undefined ? (
                             <>
@@ -60,7 +106,14 @@ function Home() {
                                     Đăng nhập
                                 </Link>
                             </>
-                        ) : null}
+                        ) : (
+                            <>
+                                <Link to={config.routes.payment} className="btn-yellow">
+                                    Đăng ký premium
+                                </Link>
+                                
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className="rightSide">

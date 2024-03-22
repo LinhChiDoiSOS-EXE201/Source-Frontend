@@ -158,6 +158,7 @@ export default function AdminDashboard() {
                     response.data.quantityAccountBooked === null
                         ? newTotalUserPremium.push(0)
                         : newTotalUserPremium.push(response.data.quantityAccountBooked);
+                        
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
@@ -187,7 +188,7 @@ export default function AdminDashboard() {
 
         getAllBooked();
     }, [totalBooked]);
-
+        
     useEffect(() => {
         const getAllUsersWaitingForPremium = async () => {
             const response = await axiosPublic.get(USERWAITFORPREMIUM);
@@ -215,7 +216,7 @@ export default function AdminDashboard() {
         try {
             console.log(id);
             const result = await axiosPublic.post(ADDBOOKING, {
-                price: 0,
+                price: 120000,
                 customerId: id,
                 comboCourseId: '81E210F8-9274-44C5-9256-481ACCE0E8EC',
             });
@@ -335,6 +336,7 @@ export default function AdminDashboard() {
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Total Revenue</h3>
                                 <h2 className={cx('number')}>{formatCurrency(totalBooked.totalPriceBooked)}</h2>
+                                {console.log(totalBooked.totalPriceBooked)}
                                 <h3 className={cx('comparision')}>In this year</h3>
                                 {/* <img src={user} /> */}
                             </div>
@@ -347,7 +349,7 @@ export default function AdminDashboard() {
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Exchange Rate</h3>
                                 <h2 className={cx('number')}>
-                                    {(totalBooked.quantityAccountBooked / users.length) * 100} %
+                                    {(totalBooked.quantityAccountBooked / users.length).toFixed(3) * 100} %
                                 </h2>
                                 <h3 className={cx('comparision')}>In this year</h3>
                                 {/* <img src={user} /> */}
@@ -376,8 +378,8 @@ export default function AdminDashboard() {
                                     <th>User Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    <th>Address</th>
-                                    <th>Birthday</th>
+                                    {/* <th>Address</th>
+                                    <th>Birthday</th> */}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -389,8 +391,8 @@ export default function AdminDashboard() {
                                         <td>{user.applicationUserData.userName}</td>
                                         <td>{user.applicationUserData.email}</td>
                                         <td>{user.applicationUserData.phoneNumber || ''}</td>
-                                        <td>{user.applicationUserData.address || ''}</td>
-                                        <td>{user.applicationUserData.birthDay || ''}</td>
+                                        {/* <td>{user.applicationUserData.address || ''}</td>
+                                        <td>{user.applicationUserData.birthDay || ''}</td> */}
                                         <td className={cx('td-btn')}>
                                             <button
                                                 className={cx('edit-btn')}
@@ -420,8 +422,8 @@ export default function AdminDashboard() {
                                 <tr>
                                     <th>#</th>
                                     <th>Full Name</th>
-                                    <th>Address</th>
-                                    <th>Birthday</th>
+                                    <th>Phone Number</th>
+                                    {/* <th>Birthday</th> */}
                                     <th>Is Premium</th>
                                     <th>Action</th>
                                 </tr>
@@ -431,9 +433,9 @@ export default function AdminDashboard() {
                                     <tr key={user.customerId}>
                                         <td>{index + 1}</td>
                                         <td>{user.fullname}</td>
-                                        <td>{user.address || ''}</td>
-                                        <td>{user.birthDay || ''}</td>
-                                        <td>{user.isPremium || 'False'}</td>
+                                        <td>{user.phoneNumber || ''}</td>
+                                        {/* <td>{user.birthDay || ''}</td> */}
+                                        <td>{'Waiting' || 'False'}</td>
                                         <td>
                                             <button
                                                 className={cx('delete-btn')}
