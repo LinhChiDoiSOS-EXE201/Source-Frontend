@@ -26,10 +26,10 @@ function Category() {
         } else if (decode.isPaid === 'false') {
             console.log('decode: ' + decode.isPaid);
 
-            if (emergencyCategoryName !== 'Ưu tiên' || emergencyCategoryName !== 'Khẩn cấp') {
-                navigate(config.routes.profile);
-            } else {
+            if (emergencyCategoryName == 'Ưu tiên' || emergencyCategoryName == 'Khẩn cấp') {
                 window.location.href = `/khancapdetail?emergencyId=${modelId}`;
+            } else {
+                navigate(config.routes.profile);
             }
         } else {
             window.location.href = `/khancapdetail?emergencyId=${modelId}`;

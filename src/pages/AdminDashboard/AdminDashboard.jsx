@@ -53,7 +53,7 @@ export default function AdminDashboard() {
     const decode = loginInfo ? jwtDecode(loginInfo.accessToken) : null;
 
     useEffect(() => {
-        if (decode === null || user.role === 'Manager') {
+        if (decode === null || decode.role !== 'Manager') {
             history(`/`);
         }
     }, []);
