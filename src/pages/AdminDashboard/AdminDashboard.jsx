@@ -39,8 +39,8 @@ export default function AdminDashboard() {
     const [updateUserInfor, setUpdateUserInfor] = useState([]);
     const [userInfor, setUserInfor] = useState({});
     const [userWairForPremiun, setUserWaitForPremium] = useState([]);
-    const startTime = '2024-01-01';
-    const endTime = getCurrentDate();
+    const startTime = '2023-01-01';
+    const endTime = '2024-10-10';
     const [lineData, setLineData] = useState([]);
     const [totalUser, setTotalUser] = useState([]);
     const [totalUserPremium, setTotalUserPremium] = useState([]);
@@ -192,7 +192,9 @@ export default function AdminDashboard() {
     useEffect(() => {
         const getAllUsersWaitingForPremium = async () => {
             const response = await axiosPublic.get(USERWAITFORPREMIUM);
-            setUserWaitForPremium(response.data);
+            //setUserWaitForPremium(response.data);
+            const userArray = response.data;
+            setUserWaitForPremium(userArray);
         };
         getAllUsersWaitingForPremium();
     }, [userWairForPremiun]);
@@ -343,13 +345,14 @@ export default function AdminDashboard() {
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Total User Premium</h3>
                                 <h2 className={cx('number')}>{totalBooked.quantityAccountBooked}</h2>
+                                {console.log(totalBooked.quantityAccountBooked)}
                                 <h3 className={cx('comparision')}>In this year</h3>
                                 {/* <img src={user} /> */}
                             </div>
                             <div className={cx('card')}>
                                 <h3 className={cx('category')}>Exchange Rate</h3>
                                 <h2 className={cx('number')}>
-                                    {(totalBooked.quantityAccountBooked / users.length).toFixed(3) * 100} %
+                                    {(totalBooked.quantityAccountBooked / users.length).toFixed(2) * 100} %
                                 </h2>
                                 <h3 className={cx('comparision')}>In this year</h3>
                                 {/* <img src={user} /> */}
