@@ -48,7 +48,7 @@ function Register() {
                 .required('Required')
                 .matches(
                     /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/,
-                    'Password must be 7-19 characters and contain at least one letter, one number and a special character',
+                    'Password must be 7-10 characters and contain at least one capital letter, one number and a special character',
                 ),
             confirmPassword: Yup.string()
                 .required('Required')
