@@ -29,7 +29,7 @@ function Category() {
             if (emergencyCategoryName == 'Ưu tiên' || emergencyCategoryName == 'Khẩn cấp') {
                 window.location.href = `/khancapdetail?emergencyId=${modelId}`;
             } else {
-                navigate(config.routes.profile);
+                navigate(config.routes.home);
             }
         } else {
             window.location.href = `/khancapdetail?emergencyId=${modelId}`;
