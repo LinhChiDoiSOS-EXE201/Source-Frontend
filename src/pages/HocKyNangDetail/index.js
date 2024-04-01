@@ -57,7 +57,7 @@ function KyNangDetail() {
                 navigate('/');
             } else {
                 const response = await fetch(
-                    `https://api-6969.ministore.tech/api/v1/course-detail/${id}/${applicationUserId}`,
+                    `https://khoa.ministore.tech/api/v1/course-detail/${id}/${applicationUserId}`,
                 );
                 if (response.status !== 200) {
                     navigate(config.routes.home);
